@@ -1,0 +1,20 @@
+.fMain {
+  background-color: darkslategray;
+  color: white;
+  height: 270px;
+  width: 100%;
+}
+.ful {
+  list-style: none;
+  float: left;
+  width: 16%;
+  padding: 5px;
+  margin-left: 45px;
+}
+.fli {
+  font-size: 18pt;
+  margin-bottom: 14px;
+  margin-top: 22px;
+  color: white;
+  text-align: left;
+}

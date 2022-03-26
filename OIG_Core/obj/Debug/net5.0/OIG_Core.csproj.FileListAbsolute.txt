@@ -1,0 +1,12 @@
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\bin\Debug\net5.0\OIG_Core.deps.json
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\bin\Debug\net5.0\OIG_Core.dll
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\bin\Debug\net5.0\ref\OIG_Core.dll
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\bin\Debug\net5.0\OIG_Core.pdb
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.csproj.AssemblyReference.cache
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.AssemblyInfoInputs.cache
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.AssemblyInfo.cs
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.csproj.CoreCompileInputs.cache
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.dll
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\ref\OIG_Core.dll
+D:\Angular\OIG_FYP\OIG_FYPproject\OIG_Core\obj\Debug\net5.0\OIG_Core.pdb

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "/wyE+amjOvOteFBOTrhiI2I4mR7tZJ0judoaqgGk9LE6HD0BtVMTtdd8DMSx5Pu9ndWNAAMvIYck4ln2pTjxqA==",
+  "success": true,
+  "projectFilePath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\RAO\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\RAO\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\RAO\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

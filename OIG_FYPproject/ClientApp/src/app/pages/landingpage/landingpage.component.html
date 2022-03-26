@@ -1,0 +1,106 @@
+<div class="containerMain">
+  <nav class="nav-bar">
+    <a href="index.html"
+      ><img
+        src="../../../assets/images/logo.jpg"
+        class="logo-image"
+        alt="alternative"
+    /></a>
+    <a
+      style="
+        color: white;
+        font-size: 24pt;
+        margin-left: 27px;
+        font-family: cursive;
+      "
+      >ally</a
+    >
+    <ul class="list">
+      <li>
+        <button class="btn-Login" routerLink="/login">
+          <strong>Log In</strong>
+        </button>
+      </li>
+      <li class="list-item">About</li>
+      <li class="list-item">Contact Us</li>
+    </ul>
+  </nav>
+  <div class="main">
+    <hr style="margin-top: 70px;" />
+    <div class="img_div">
+      <img src="../../../assets/images/61251-tablet-mobile-invest-app-v2.png" />
+    </div>
+    <div class="miniContainer">
+      <p class="p1">Investing With Us</p>
+      <p class="p2">Invest the way you want.</p>
+      <p class="p3">We can show you how.</p>
+    </div>
+    <hr style="margin-top: 415px" />
+  </div>
+  <div class="main2">
+    <h1 style="color: white; margin-top: 70px">
+      Select Your Investment Approach
+    </h1>
+    <div
+      class="mini2l"
+      style="float: left; margin-left: 130px; margin-right: 20px"
+    >
+      <h4 style="color: darkslategray; margin-bottom: 30px">
+        Self-Directed Trading
+      </h4>
+      <p style="font-size: 12pt">
+        For investors who want to manage their own portfolio, you can start
+        trading stocks and ETFs for $0 with no account minimums. Other fees may
+        apply.
+      </p>
+      <button class="btn-2">Open Account</button>
+      <p
+        style="
+          color: dodgerblue;
+          font-size: 13pt;
+          margin-top: 5px;
+          cursor: pointer;
+        "
+      >
+        <strong>Explore self-directed trading</strong>
+      </p>
+    </div>
+    <div class="mini2r" style="float: left">
+      <h4 style="color: darkslategray; margin-bottom: 30px">Robo Portfolios</h4>
+      <p style="font-size: 12pt">
+        Automated portfolios managed by a team of investment specialists. There
+        are no advisory fees, annual charges or rebalancing fees. All you need
+        is $100 to get started.
+      </p>
+      <button class="btn-2">Create Your Plan</button>
+      <p
+        style="
+          color: dodgerblue;
+          font-size: 13pt;
+          margin-top: 5px;
+          cursor: pointer;
+        "
+      >
+        <strong>Explore robo portfolios</strong>
+      </p>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<script>
+  $(document).ready(function () {
+    var scroll_start = 0;
+    var startchange = $("#startchange");
+    var offset = startchange.offset();
+    if (startchange.length) {
+      $(document).scroll(function () {
+        scroll_start = $(this).scrollTop();
+        if (scroll_start > offset.top) {
+          $(".nav-bar").css("background-color", "#f0f0f0");
+        } else {
+          $(".nav-bar").css("background-color", "transparent");
+        }
+      });
+    }
+  });
+</script>

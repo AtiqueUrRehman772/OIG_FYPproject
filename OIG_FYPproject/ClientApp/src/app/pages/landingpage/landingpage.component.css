@@ -1,0 +1,149 @@
+.containerMain{
+    background-color:aliceblue;
+}
+.nav-bar{
+    background-color: black;
+    padding: 5px;
+    justify-content: center;
+    border-bottom: 0.1px solid darkslategray;
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    z-index: 99;
+    backdrop-filter: saturate(180%) blur(5px);
+}
+.logo-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;
+    margin: 2px;
+    margin-left: 35px;
+}
+.btn-Login{
+    background-color: darkcyan;
+    padding: 8px;
+    width: 85px;
+    border: 0px solid;
+    border-radius: 4px;
+    color: wheat;
+}
+.btn-Login:hover , .list-item:hover{
+    color: darkslategrey;
+    background-color: aliceblue;
+    border: 0.2px solid darkslategray;
+    border-radius: 4px;
+    transition: 0.5s;
+    width: 100px;
+    justify-self: center;
+}
+.list{
+    list-style: none;
+    display:inline-block;
+}
+.list,li{
+    float: right;
+}
+li{
+    padding: 4px;
+    margin: 3px;
+}
+.list-item{
+    color: grey;
+    margin: 10px;
+    font-size: 12pt;
+    width: 85px;
+    text-align: center;
+    cursor: pointer;
+}
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+.main{
+    padding: 65px;
+    background-color:aliceblue;
+    height: 630px;
+    border-radius: 10px;
+    box-shadow: 60mm;
+}
+.img_div{
+    float: left;
+    margin-top: 50px;
+    animation: 0.5s ease-out 0s 1 slideInFromTop;
+}
+.miniContainer{
+    margin-top: 80px;
+    float: right;
+    text-align: center;
+    width: 45%;
+    animation: 0.5s ease-out 0s 1 slideInFromRight;
+}
+.p1{
+    font-size: 30px;
+    color: darkslategray;
+}
+.p2,.p3{
+    font-size: 50px;
+    font-weight: bold;
+    color: cadetblue;
+}
+.main2{
+    width: 100%;
+    height: 580px;
+    background-color: gray;
+    text-align: center;
+    padding-top: 18px;
+}
+.mini2l,.mini2r{
+    background-color: white;
+    width: 40%;
+    height: 300px;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+    animation: 0.5s ease-out 0s 1 slideInFromRight;
+}
+.mini2l{
+    animation: 0.5s ease-out 0s 1 slideInFromLeft;
+}
+.mini2r{
+    animation: 0.5s ease-out 0s 1 slideInFromRight;
+}
+.btn-2{
+    border: 0px solid;
+    border-radius: 4px;
+    background-color:dodgerblue ;
+    color: white;
+    padding: 10px;
+    margin-top: 28px;
+    margin-bottom: 15px;
+}
+.btn-2:hover{
+    border: 0.5px solid dodgerblue;
+    border-radius: 4px;
+    background-color:white ;
+    color: black;
+    padding: 10px;
+    transition: 0.5s;
+}
