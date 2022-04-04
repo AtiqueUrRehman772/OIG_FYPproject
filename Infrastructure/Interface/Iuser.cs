@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OIG_Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Infrastructure.Interface
 {
     public interface Iuser
     {
-        public bool login();
+        public string login(user_entity obj);
+        public bool register(user_entity obj);
     }
 }

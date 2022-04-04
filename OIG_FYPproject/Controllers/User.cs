@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OIG_Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,9 +20,17 @@ namespace OIG_FYPproject.Controllers
             _user = user;
         }
         [HttpPost("login")]
-        public void add([FromBody] temp obj) {
-            bool x = _user.login();
-            x = x;
+        public user_entity loginUser([FromBody] user_entity obj) {
+            string role = _user.login(obj);
+            obj.password="";
+            obj.userName = role;
+            return obj;
+        }
+        [HttpPost("register")]
+        public bool addUser([FromBody] user_entity obj)
+        {
+            bool x = _user.register(obj);
+            return x;
         }
     }
 }

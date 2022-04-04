@@ -1,0 +1,347 @@
+<div class="container-scroller">
+  <nav class="navbar horizontal-layout-navbar fixed-top navbar-expand-lg">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+      <a class="navbar-brand brand-logo"><img src="../../../assets/images/logo.svg" alt="logo"/></a>
+      <a class="navbar-brand brand-logo-mini"><img src="../../../assets/images/logo-mini.svg" alt="logo"/></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex flex-grow">
+      <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown" aria-expanded="false">
+            Portfolio
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
+            <a class="dropdown-item" style="cursor: pointer;" routerLink="/profile">
+              <i class="fa fa-user-astronaut mr-2 text-primary"></i>
+              Portfolio
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-user-edit mr-2 text-primary"></i>
+              Edit Profile
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="employees-dropdown" data-toggle="dropdown" aria-expanded="false">
+            Business Catalogue
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-building mr-2 text-primary"></i>
+              Property
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-car mr-2 text-primary"></i>
+              Property
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-school mr-2 text-primary"></i>
+              School
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-seedling mr-2 text-primary"></i>
+              Agriculture
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-hotel mr-2 text-primary"></i>
+              Restaurants
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+            Rankings
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-star mr-2 text-primary"></i>
+              Advisors Rankings
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile">
+          <a class="nav-link" style="cursor: pointer;" routerLink="/profile">
+            <div class="nav-profile-text">
+              Jane Robert
+            </div>
+            <div class="nav-profile-img">
+              <img src="../../../assets/images/faces/face20.jpg" alt="image" class="img-xs rounded-circle ml-3">
+              <span class="availability-status online"></span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item nav-search">
+          <div class="nav-link">
+            <div class="search-field d-none d-md-block">
+              <form class="d-flex align-items-stretch h-100" action="#">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Search your projects ...">
+                </div>
+              </form>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">
+            <i class="fas fa-power-off font-weight-bold icon-sm"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+      <div class="content-wrapper" style="margin-top: 73px;">
+        <div class="page-header">
+          <h3 class="page-title">
+            Dashboard
+          </h3>
+        </div>
+        <div class="row grid-margin">
+          <div class="col-12">
+            <div class="card card-statistics">
+              <div class="card-body">
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fa fa-user mr-2"></i>
+                        New users
+                      </p>
+                      <h2>54000</h2>
+                      <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                    </div>
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                        Avg Time
+                      </p>
+                      <h2>123.50</h2>
+                      <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                    </div>
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
+                        Downloads
+                      </p>
+                      <h2>3500</h2>
+                      <label class="badge badge-outline-success badge-pill">12% increase</label>
+                    </div>
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fas fa-check-circle mr-2"></i>
+                        Update
+                      </p>
+                      <h2>7500</h2>
+                      <label class="badge badge-outline-success badge-pill">57% increase</label>
+                    </div>
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fas fa-chart-line mr-2"></i>
+                        Sales
+                      </p>
+                      <h2>9000</h2>
+                      <label class="badge badge-outline-success badge-pill">10% increase</label>
+                    </div>
+                    <div class="statistics-item">
+                      <p>
+                        <i class="icon-sm fas fa-circle-notch mr-2"></i>
+                        Pending
+                      </p>
+                      <h2>7500</h2>
+                      <label class="badge badge-outline-danger badge-pill">16% decrease</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Data table</h4>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="order-listing" class="table">
+                    <thead>
+                      <tr>
+                          <th>Order #</th>
+                          <th>Purchased On</th>
+                          <th>Customer</th>
+                          <th>Ship to</th>
+                          <th>Base Price</th>
+                          <th>Purchased Price</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>2012/08/03</td>
+                          <td>Edinburgh</td>
+                          <td>New York</td>
+                          <td>$1500</td>
+                          <td>$3200</td>
+                          <td>
+                            <label class="badge badge-info">On hold</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>2015/04/01</td>
+                          <td>Doe</td>
+                          <td>Brazil</td>
+                          <td>$4500</td>
+                          <td>$7500</td>
+                          <td>
+                            <label class="badge badge-danger">Pending</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>3</td>
+                          <td>2010/11/21</td>
+                          <td>Sam</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-success">Closed</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>4</td>
+                          <td>2016/01/12</td>
+                          <td>Sam</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-success">Closed</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>5</td>
+                          <td>2017/12/28</td>
+                          <td>Sam</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-success">Closed</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>6</td>
+                          <td>2000/10/30</td>
+                          <td>Sam</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-info">On-hold</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>7</td>
+                          <td>2011/03/11</td>
+                          <td>Cris</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-success">Closed</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>8</td>
+                          <td>2015/06/25</td>
+                          <td>Tim</td>
+                          <td>Italy</td>
+                          <td>$6300</td>
+                          <td>$2100</td>
+                          <td>
+                            <label class="badge badge-info">On-hold</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>9</td>
+                          <td>2016/11/12</td>
+                          <td>John</td>
+                          <td>Tokyo</td>
+                          <td>$2100</td>
+                          <td>$6300</td>
+                          <td>
+                            <label class="badge badge-success">Closed</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>10</td>
+                          <td>2003/12/26</td>
+                          <td>Tom</td>
+                          <td>Germany</td>
+                          <td>$1100</td>
+                          <td>$2300</td>
+                          <td>
+                            <label class="badge badge-danger">Pending</label>
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-primary">View</button>
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:../../partials/_footer.html -->
+      <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        </div>
+      </footer>
+      <!-- partial -->
+
+    <!-- main-panel ends -->
+
+  <!-- page-body-wrapper ends -->
