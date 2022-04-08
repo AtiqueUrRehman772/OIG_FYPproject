@@ -55,6 +55,7 @@ namespace Infrastructure.Implemetation
             {
                 SqlConnection con = new SqlConnection(connString);
                 con.Open();
+                obj.role = "investor";
                 //string query = "select * from tbl_Users where Email = '"+obj.email+"' and Password = '"+obj.password+"'";
                 string query = "userRegister";
                 SqlCommand com = new SqlCommand(query, con);
@@ -62,6 +63,7 @@ namespace Infrastructure.Implemetation
                 com.Parameters.AddWithValue("userName", obj.userName);
                 com.Parameters.AddWithValue("email", obj.email);
                 com.Parameters.AddWithValue("password", obj.password);
+                com.Parameters.AddWithValue("role", obj.role);
                 com.ExecuteNonQuery();
                 con.Close();
                 return true;
@@ -69,6 +71,64 @@ namespace Infrastructure.Implemetation
             catch (Exception e)
             {
                 return false;
+                throw;
+            }
+        }
+        public List<user_entity> getInvestors()
+        {
+            List<user_entity> list = new List<user_entity>();
+            user_entity obj;
+            try
+            {
+                SqlConnection con = new SqlConnection(connString);
+                con.Open();
+                string query = "getInvestors";
+                SqlCommand com = new SqlCommand(query, con);
+                com.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = com.ExecuteReader();
+                while (sdr.Read())
+                {
+                    obj = new user_entity();
+                    obj.userName = sdr["User_Name"].ToString();
+                    obj.email = sdr["Email"].ToString();
+                    obj.password = sdr["Password"].ToString();
+                    list.Add(obj);
+                }
+                con.Close();
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
+                throw;
+            }
+        }
+        public List<user_entity> getAdvisors()
+        {
+            List<user_entity> list = new List<user_entity>();
+            user_entity obj;
+            try
+            {
+                SqlConnection con = new SqlConnection(connString);
+                con.Open();
+                string query = "getAdvisors";
+                SqlCommand com = new SqlCommand(query, con);
+                com.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = com.ExecuteReader();
+                while (sdr.Read())
+                {
+                    obj = new user_entity();
+                    obj.userName = sdr["User_Name"].ToString();
+                    obj.email = sdr["Email"].ToString();
+                    obj.password = sdr["Password"].ToString();
+                    list.Add(obj);
+                }
+                con.Close();
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
                 throw;
             }
         }

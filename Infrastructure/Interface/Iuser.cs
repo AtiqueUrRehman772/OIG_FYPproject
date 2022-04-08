@@ -11,5 +11,7 @@ namespace Infrastructure.Interface
     {
         public string login(user_entity obj);
         public bool register(user_entity obj);
+        public List<user_entity> getInvestors();
+        public List<user_entity> getAdvisors();
     }
 }

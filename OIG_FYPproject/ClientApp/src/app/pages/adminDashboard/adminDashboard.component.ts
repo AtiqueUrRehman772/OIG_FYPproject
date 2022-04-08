@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetRequestsService } from '../services/getRequests/getRequests.service';
 
 @Component({
   selector: 'app-adminDashboard',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getRequests:GetRequestsService) { }
 
   ngOnInit() {
   }
-
+  requests:any ={userName:"",userEmail:"",userPassword:"",userRole:"",requestStatus:""}
+  getInvestorRequests(){
+    this.requests = this.getRequests.getInvestorRequests().subscribe(
+      data=>{
+        this.requests = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+      );
+  }
+  getInvestors(){
+    this.requests = this.getRequests.getInvestorRequests().subscribe(
+      data=>{
+        this.requests = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+      );
+  }
 }

@@ -29,6 +29,7 @@ namespace OIG_FYPproject
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddTransient<Iuser, user>();
+            services.AddTransient<IRequest, Request>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

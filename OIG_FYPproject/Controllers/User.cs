@@ -32,5 +32,18 @@ namespace OIG_FYPproject.Controllers
             bool x = _user.register(obj);
             return x;
         }
+        [HttpGet("getInvestors")]
+        public List<user_entity> getInvestors() {
+            List<user_entity> list = new List<user_entity>();
+            list = _user.getInvestors();
+            return list;
+        }
+        [HttpGet("getInvestors")]
+        public List<user_entity> getAdvisors()
+        {
+            List<user_entity> list = new List<user_entity>();
+            list = _user.getInvestors().ToList();
+            return list;
+        }
     }
 }
