@@ -41,6 +41,7 @@ namespace Infrastructure.Implemetation
                     obj.userPassword = sdr["UserPassword"].ToString();
                     obj.userRole = sdr["UserRole"].ToString();
                     obj.requestStatus = sdr["RequestStatus"].ToString();
+                    list.Add(obj);
                 }
                 con.Close();
                 return list;

@@ -14,18 +14,23 @@ export class AdminDashboardComponent implements OnInit {
   }
   requests:any ={userName:"",userEmail:"",userPassword:"",userRole:"",requestStatus:""}
   getInvestorRequests(){
+    debugger;
     this.requests = this.getRequests.getInvestorRequests().subscribe(
       data=>{
+        console.warn(data);
         this.requests = data;
       },
       (error) => {
         console.error(error);
       }
       );
+      console.warn(this.requests);
   }
   getInvestors(){
+    debugger;
     this.requests = this.getRequests.getInvestorRequests().subscribe(
       data=>{
+        console.warn(data);
         this.requests = data;
       },
       (error) => {
