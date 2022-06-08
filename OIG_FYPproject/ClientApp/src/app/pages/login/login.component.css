@@ -139,7 +139,7 @@ ul li a:hover {
 
  .loginForm{
    width: 280px;
-   height: 380px;
+   height: 430px;
    background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.8));
    position: absolute;
    top: -20px;
@@ -151,9 +151,9 @@ ul li a:hover {
    width: 220px;
    font-family: sans-serif;
    text-align: center;
-   color: #ff7200;
+   color: #000;
    font-size: 22px;
-   background-color: #fff;
+   background-color: #ff7200;
    border-radius: 10px;
    margin: 2px;
    padding: 8px;
@@ -214,4 +214,9 @@ ul li a:hover {
   padding-top: 15px;
   padding-bottom: 10px;
   text-align: center;
+}
+.loginIcon a{
+  color: white;
+  font-size: 36px;
+  margin-right: 16px;
 }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {}
+    "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {}
   },
   "projects": {
-    "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {
+    "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj",
+        "projectUniqueName": "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj",
         "projectName": "OIG_Core",
-        "projectPath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj",
-        "packagesPath": "C:\\Users\\RAO\\.nuget\\packages\\",
-        "outputPath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\obj\\",
+        "projectPath": "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj",
+        "packagesPath": "C:\\Users\\Mega Providers\\.nuget\\packages\\",
+        "outputPath": "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\RAO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mega Providers\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

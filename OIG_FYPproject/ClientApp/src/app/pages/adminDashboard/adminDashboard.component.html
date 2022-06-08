@@ -1,45 +1,69 @@
-<div class="container-scroller">
+<div class="containerr" *ngIf="showLoader == true">
+  <div class="loader"></div>
+</div>
+<div class="container-scroller" *ngIf="showLoader == false">
   <nav class="navbar horizontal-layout-navbar fixed-top navbar-expand-lg">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-      <a class="navbar-brand brand-logo" href="../../index-2.html"><img src="../../../assets/images/logo.svg" alt="logo"/></a>
-      <a class="navbar-brand brand-logo-mini" href="../../index-2.html"><img src="../../../assets/images/logo-mini.svg" alt="logo"/></a>
+      <a class="navbar-brand brand-logo" href="../../index-2.html"><img src="../../../assets/images/logo.svg"
+          alt="logo" /></a>
+      <a class="navbar-brand brand-logo-mini" href="../../index-2.html"><img src="../../../assets/images/logo-mini.svg"
+          alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex flex-grow">
       <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
             Requests
           </a>
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getAdvisorRequests()">
               <i class="fas fa-user-clock mr-2 text-primary"></i>
               Advisor Requests
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="cursor: pointer;" (click) = "getInvestorRequests()">
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getInvestorRequests()">
               <i class="fas fa-user-clock mr-2 text-primary"></i>
               Investor Requests
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getOwnerRequests()">
+              <i class="fas fa-user-clock mr-2 text-primary"></i>
+              Business Owner Requests
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getAllRequests()">
+              <i class="fas fa-user-clock mr-2 text-primary"></i>
+              Requests History
             </a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
             Users
           </a>
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
-            <a class="dropdown-item" href="#">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getUsers()">
+              <i class="fas fa-user-shield mr-2 text-primary"></i>
+              All Users
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getAdvisors()">
               <i class="fas fa-user-graduate mr-2 text-primary"></i>
               Advisors
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getInvestors()">
               <i class="fas fa-user-shield mr-2 text-primary"></i>
               Investors
             </a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
             Rankings
           </a>
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
@@ -54,7 +78,7 @@
         <li class="nav-item nav-profile">
           <a class="nav-link">
             <div class="nav-profile-text">
-              Jane Robert
+              Administrator
             </div>
             <div class="nav-profile-img">
               <img src="../../../assets/images/faces/face20.jpg" alt="image" class="img-xs rounded-circle ml-3">
@@ -62,271 +86,243 @@
             </div>
           </a>
         </li>
-        <li class="nav-item nav-search">
-          <div class="nav-link">
-            <div class="search-field d-none d-md-block">
-              <form class="d-flex align-items-stretch h-100" action="#">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-search"></i>
-                      </span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Search your projects ...">
-                </div>
-              </form>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">
+        <li class="nav-item" style="cursor: pointer;">
+          <a class="nav-link" (click)="logout()">
             <i class="fas fa-power-off font-weight-bold icon-sm"></i>
           </a>
         </li>
       </ul>
     </div>
   </nav>
-      <div class="content-wrapper" style="margin-top: 73px;">
-        <div class="page-header">
-          <h3 class="page-title">
-            Dashboard
-          </h3>
-        </div>
-        <div class="row grid-margin">
-          <div class="col-12">
-            <div class="card card-statistics">
-              <div class="card-body">
-                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fa fa-user mr-2"></i>
-                        New users
-                      </p>
-                      <h2>54000</h2>
-                      <label class="badge badge-outline-success badge-pill">2.7% increase</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                        Avg Time
-                      </p>
-                      <h2>123.50</h2>
-                      <label class="badge badge-outline-danger badge-pill">30% decrease</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                        Downloads
-                      </p>
-                      <h2>3500</h2>
-                      <label class="badge badge-outline-success badge-pill">12% increase</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-check-circle mr-2"></i>
-                        Update
-                      </p>
-                      <h2>7500</h2>
-                      <label class="badge badge-outline-success badge-pill">57% increase</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-chart-line mr-2"></i>
-                        Sales
-                      </p>
-                      <h2>9000</h2>
-                      <label class="badge badge-outline-success badge-pill">10% increase</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                        Pending
-                      </p>
-                      <h2>7500</h2>
-                      <label class="badge badge-outline-danger badge-pill">16% decrease</label>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
+  <div class="content-wrapper" style="margin-top: 73px;min-height: 100vh;">
+    <div class="page-header">
+      <h3 class="page-title">
+        Dashboard
+      </h3>
+    </div>
+    <div class="row grid-margin" *ngIf="showRqTbl == false && showUserTbl == false">
+      <div class="col-12">
+        <div class="card card-statistics">
           <div class="card-body">
-            <h4 class="card-title">Data table</h4>
-            <div class="row">
-              <div class="col-12">
-                <div class="table-responsive">
-                  <table id="order-listing" class="table">
-                    <thead>
-                      <tr>
-                          <th>Order #</th>
-                          <th>Purchased On</th>
-                          <th>Customer</th>
-                          <th>Ship to</th>
-                          <th>Base Price</th>
-                          <th>Purchased Price</th>
-                          <th>Status</th>
-                          <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>2012/08/03</td>
-                          <td>Edinburgh</td>
-                          <td>New York</td>
-                          <td>$1500</td>
-                          <td>$3200</td>
-                          <td>
-                            <label class="badge badge-info">On hold</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>2015/04/01</td>
-                          <td>Doe</td>
-                          <td>Brazil</td>
-                          <td>$4500</td>
-                          <td>$7500</td>
-                          <td>
-                            <label class="badge badge-danger">Pending</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>3</td>
-                          <td>2010/11/21</td>
-                          <td>Sam</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-success">Closed</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>4</td>
-                          <td>2016/01/12</td>
-                          <td>Sam</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-success">Closed</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>5</td>
-                          <td>2017/12/28</td>
-                          <td>Sam</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-success">Closed</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>6</td>
-                          <td>2000/10/30</td>
-                          <td>Sam</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-info">On-hold</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>7</td>
-                          <td>2011/03/11</td>
-                          <td>Cris</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-success">Closed</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>8</td>
-                          <td>2015/06/25</td>
-                          <td>Tim</td>
-                          <td>Italy</td>
-                          <td>$6300</td>
-                          <td>$2100</td>
-                          <td>
-                            <label class="badge badge-info">On-hold</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>9</td>
-                          <td>2016/11/12</td>
-                          <td>John</td>
-                          <td>Tokyo</td>
-                          <td>$2100</td>
-                          <td>$6300</td>
-                          <td>
-                            <label class="badge badge-success">Closed</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>10</td>
-                          <td>2003/12/26</td>
-                          <td>Tom</td>
-                          <td>Germany</td>
-                          <td>$1100</td>
-                          <td>$2300</td>
-                          <td>
-                            <label class="badge badge-danger">Pending</label>
-                          </td>
-                          <td>
-                            <button class="btn btn-outline-primary">View</button>
-                          </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fa fa-user mr-2"></i>
+                  Total Users
+                </p>
+                <h2>{{usersCount.email}}</h2>
+                <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                  Pending Requests
+                </p>
+                <h2>{{requestCount.email}}</h2>
+                <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-check-circle mr-2"></i>
+                  Accepted Requests
+                </p>
+                <h2>{{requestAccCount.email}}</h2>
+                <label class="badge badge-outline-success badge-pill">57% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
+                  Declined Requests
+                </p>
+                <h2>{{requestDecCount.email}}</h2>
+                <label class="badge badge-outline-danger badge-pill">10% decrease</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-chart-line mr-2"></i>
+                  Sales
+                </p>
+                <h2>9000</h2>
+                <label class="badge badge-outline-success badge-pill">12% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-circle-notch mr-2"></i>
+                  Time
+                </p>
+                <h2 style="font-size: 23px;">{{time.email}}</h2>
+                <label class="badge badge-outline-success badge-pill">16% increase</label>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- content-wrapper ends -->
-      <!-- partial:../../partials/_footer.html -->
-      <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+    </div>
+    <div class="containerr" style="height: 60vh;" *ngIf="showLoader1 == true">
+      <div class="loader"></div>
+    </div>
+    <!-------- Requests Table Card -------->
+    <div class="card" *ngIf="showRqTbl==true && showLoader1 == false">
+      <div class="card-body">
+        <h4 class="card-title" style="float: left;">Requests</h4>
+        <div style="right: 5px;right: 5px;text-align: right;margin-bottom: 30px;"><i style="cursor: pointer;"
+            class="fa fa-times" (click)="hideRqTbl()"></i></div>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="order-listing1" class="table">
+                <thead>
+                  <tr>
+                    <th>Sr.</th>
+                    <th>Applicant Name</th>
+                    <th>Applicant Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Request Status</th>
+                    <th *ngIf="showAll == false">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of requests">
+                    <td>{{count}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.userEmail}}</td>
+                    <td>{{item.userPassword}}</td>
+                    <td>{{item.userRole}}</td>
+                    <td *ngIf="showAll == false"><span class="badge badge-info">{{item.requestStatus}}</span></td>
+                    <td>
+                      <span style="margin-left: 5px;" class="btn btn-success btn-icon-text"
+                        *ngIf="item.requestStatus == 'Accepted'"><i
+                          class="fa fa-check btn-icon-prepend"></i>Accepted</span>
+                      <span style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
+                        *ngIf="item.requestStatus == 'Declined'"><i
+                          class="fa fa-exclamation-triangle btn-icon-prepend"></i>Declined</span>
+                      <span style="margin-left: 5px;" class="btn btn-primary btn-icon-text"
+                        *ngIf="item.requestStatus == 'Pending' && showAll == true"><i
+                          class="fa fa-exclamation-circle btn-icon-prepend"></i>Pending</span>
+                      <button style="margin-left: 5px;" class="btn btn-primary btn-icon-text"
+                        *ngIf="item.requestStatus == 'Pending' && showAll == false"
+                        (click)="acceptRequest(item.userEmail,item.userRole)"><i
+                          class="fa fa-check btn-icon-prepend"></i>Accept</button>
+                      <button style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
+                        *ngIf="item.requestStatus == 'Pending' && showAll == false"
+                        (click)="declineRequest(item.userEmail,item.userRole)"><i
+                          class="fa fa-exclamation-triangle btn-icon-prepend"></i>Decline</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </footer>
-      <!-- partial -->
-
-    <!-- main-panel ends -->
-
-  <!-- page-body-wrapper ends -->
+      </div>
+    </div>
+    <!-------- Requests Table Card -------->
+    <div class="card" *ngIf="showUserTbl==true && showLoader1 == false">
+      <div class="card-body">
+        <h4 class="card-title" style="float: left;">Users</h4>
+        <div style="right: 5px;right: 5px;text-align: right;margin-bottom: 30px;"><i style="cursor: pointer;"
+            class="fa fa-times" (click)="hideUserTbl()"></i></div>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="order-listing1" class="table">
+                <thead>
+                  <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of users">
+                    <td>{{item.userName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.password}}</td>
+                    <td>{{item.role}}</td>
+                    <td>
+                      <button style="margin-left: 5px;" class="btn btn-dark btn-icon-text" data-toggle="modal"
+                        data-target="#exampleModal-2" (click)="fillModal(item.userName,item.email,item.password)">
+                        Edit
+                        <i class="fas fa-pencil-alt btn-icon-append"></i>
+                      </button>
+                      <button style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
+                        (click)="deleteUser(item.email,item.role)">Delete
+                        <i class="fas fa-trash-alt btn-icon-append"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------- User Edit Modal ----------->
+    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel-2">Edit User Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="forms-sample" [formGroup]="editUserForm">
+              <div class="form-group">
+                <label for="modalUser">Username</label>
+                <input type="text" formControlName="userName" value="{{userModal.userName}}" class="form-control"
+                  id="modalUser" placeholder="Username" />
+              </div>
+              <div class="form-group">
+                <label for="modalEmail">Email address</label>
+                <input type="email" disabled formControlName="email" value="{{userModal.userEmail}}" class="form-control"
+                  id="modalEmail" placeholder="Email" />
+              </div>
+              <div class="form-group">
+                <label for="modalPassword">Password</label>
+                <input type="text" formControlName="password" value="{{userModal.userPassword}}" class="form-control"
+                  id="modalPassword" placeholder="Password" />
+              </div>
+              <div class="form-group">
+                <label for="modalRole">Role</label>
+                <div class="row" style="justify-content: space-evenly;">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="" />
+                      Advisor
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="" />
+                      Investor
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="editUserDetails()">Submit</button>
+            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
+          href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+    </div>
+  </footer>
+  <!-- partial -->
+  <!-- main-panel ends -->

@@ -1,0 +1,15 @@
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\Infrastructure.deps.json
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\Infrastructure.dll
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\ref\Infrastructure.dll
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\Infrastructure.pdb
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\OIG_Core.dll
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\bin\Release\net5.0\OIG_Core.pdb
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.csproj.AssemblyReference.cache
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.AssemblyInfoInputs.cache
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.AssemblyInfo.cs
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.csproj.CopyComplete
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.dll
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\ref\Infrastructure.dll
+F:\OIG_FYPproject\OIG_FYPproject\Infrastructure\obj\Release\net5.0\Infrastructure.pdb

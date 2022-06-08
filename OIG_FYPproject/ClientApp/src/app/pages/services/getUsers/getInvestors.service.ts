@@ -9,6 +9,9 @@ export class GetInvestorsService {
   constructor(private http: HttpClient) {}
 
   getInvestors() {
-      return this.http.get("https://localhost:44325/api/User/getInvestors");
+      return this.http.get("https://localhost:44302/api/User/getInvestors");
+    }
+  getAdvisors() {
+      return this.http.get("https://localhost:44302/api/User/getAdvisors");
     }
 }

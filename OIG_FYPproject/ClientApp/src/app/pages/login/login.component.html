@@ -1,4 +1,7 @@
-<div class="loginMain">
+<div class="containerr" *ngIf="showLoader == true">
+  <div class="loader"></div>
+</div>
+<div class="loginMain" *ngIf="showLoader == false">
   <div class="loginNavbar">
     <div class="loginIcon">
       <h2 class="loginLogo">Melody</h2>
@@ -23,16 +26,20 @@
       Invest the way you want.We can show you how.
     </p>
     <button class="loginCn">JOIN US</button>
-    <form [formGroup]="loginForm" class="loginForm">
+    <form [formGroup]="loginForm" class="loginForm" (ngSubmit)="loginUser()">
       <h2>Login Here</h2>
-      <input type="email" id="email" formControlName="email" required name="email" placeholder="Enter Email Here">
-      <input type="password" id="password" name="password" formControlName="password" required placeholder="Enter Password Here">
-      <button class="loginBtnn" (click)="loginUser()">Login</button>
+      <input  type="email" id="email" formControlName="email" required name="email" placeholder="Enter Email Here">
+      <input  type="password" id="password" name="password" formControlName="password" required placeholder="Enter Password Here">
+      <p class="loginLink" style="color: red;" *ngIf="email.invalid ||password.invalid">Please Enter Credentials !!</p>
+      <button type="submit" *ngIf="(email.valid && password.valid)" class="loginBtnn">Login</button>
       <p class="loginLink">Don't have an account?<br>
       <a routerLink="/signup">Sign up </a>here</p>
       <p class="liw">Log in with</p>
-      <div class="loginIcon">
-        <a href="#"><i class="fa fa-facebook"></i></a>
+      <div class="loginIcon" style="width: 100%;text-align: center;">
+        <a href="#"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-google" aria-hidden="true"></i></a>
       </div>
     </form>
   </div>

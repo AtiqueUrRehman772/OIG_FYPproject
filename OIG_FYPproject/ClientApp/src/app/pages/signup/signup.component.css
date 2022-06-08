@@ -1,26 +1,30 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-.loginMain{
+
+.loginMain {
   width: 100%;
-  background: linear-gradient(to top,rgba(0,0,0,0.5));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5));
   background-image: url(../../../assets/images/bg.jpg);
-  background-position:center;
+  background-position: center;
   background-size: cover;
   height: 109vh;
 }
-.loginNavbar{
+
+.loginNavbar {
   width: 1200px;
   height: 75px;
   margin: auto;
 }
-.loginIcon{
+
+.loginIcon {
   width: 200px;
   float: left;
   height: 70px;
 }
-.loginLogo{
+
+.loginLogo {
   color: #ff7200;
   font-size: 35px;
   font-family: Arial;
@@ -28,23 +32,27 @@
   float: left;
   padding-top: 10px;
 }
-.loginMenu{
+
+.loginMenu {
   width: 400px;
   float: left;
   height: 70px;
 }
-ul{
+
+ul {
   float: left;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-ul li{
+
+ul li {
   list-style: none;
   margin-left: 62px;
   margin-top: 27px;
   font-size: 14px;
 }
+
 ul li a {
   text-decoration: none;
   color: white;
@@ -52,15 +60,18 @@ ul li a {
   font-weight: bold;
   transition: 0.4s ease-in-out;
 }
+
 ul li a:hover {
   color: #ff7200;
 }
-.loginSearch{
+
+.loginSearch {
   width: 330px;
   float: left;
   margin-left: 270px;
 }
-.loginSrch{
+
+.loginSrch {
   font-family: 'Times New Roman';
   width: 200px;
   height: 40px;
@@ -75,7 +86,8 @@ ul li a:hover {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
 }
-.loginBtn{
+
+.loginBtn {
   width: 100px;
   height: 40px;
   background: linear-gradient(182deg, #ff7200, #ff745b);
@@ -86,104 +98,116 @@ ul li a:hover {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-.loginBtn:focus{
-  outline: none;
-}
-.loginSrch:focus{
+
+.loginBtn:focus {
   outline: none;
 }
 
-.loginContent{
+.loginSrch:focus {
+  outline: none;
+}
+
+.loginContent {
   width: 1200px;
   height: auto;
   margin: auto;
   color: #fff;
   position: relative;
 }
-.loginContent .loginPar{
+
+.loginContent .loginPar {
   padding-left: 20px;
   padding-bottom: 25px;
   font-family: Arial;
   letter-spacing: 1.2px;
   line-height: 30px;
- }
- .loginContent h1{
-   font-family: 'Times New Roman';
-   font-size: 50px;
-   padding-left: 20px;
-   margin-top: 9%;
-   letter-spacing: 2px;
- }
+}
 
- .loginCn{
-   width: 160px;
-   height: 40px;
-   background:linear-gradient(182deg, #ff7200, #ff745b);;
-   border: none;
-   margin-bottom: 10px;
-   margin-left: 20px;
-   font-size: 18px;
-   border-radius: 10px;
-   cursor: pointer;
-   color: #000;
-   transition: .5s ease;
- }
- .loginCn:hover {
-   background: #fff;
- }
- .loginContent span{
-   color: #ff7200;
-   font-size: 60px;
- }
+.loginContent h1 {
+  font-family: 'Times New Roman';
+  font-size: 50px;
+  padding-left: 20px;
+  margin-top: 9%;
+  letter-spacing: 2px;
+}
+
+.loginCn {
+  width: 160px;
+  height: 40px;
+  background: linear-gradient(182deg, #ff7200, #ff745b);
+  ;
+  border: none;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #000;
+  transition: .5s ease;
+}
+
+.loginCn:hover {
+  background: #fff;
+}
+
+.loginContent span {
+  color: #ff7200;
+  font-size: 60px;
+}
 
 
- .loginForm{
-   width: 280px;
-   height: 450px;
-   background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.8));
-   position: absolute;
-   top: -45px;
-   left: 870px;
-   border-radius: 10px;
-   padding: 25px;
- }
- .loginForm h2{
-   width: 220px;
-   font-family: sans-serif;
-   text-align: center;
-   color: #ff7200;
-   font-size: 22px;
-   background-color: #fff;
-   border-radius: 10px;
-   margin: 2px;
-   padding: 8px;
- }
- .loginForm input{
-   width: 240px;
-   height: 35px;
-   background: transparent;
-   border-bottom: 1px solid #ff7200;
-   border-top: none;
-   border-left: none;
-   border-right: none;
-   color: #fff;
-   font-size: 15px;
-   letter-spacing: 1px;
-   margin-top: 30px;
-   font-family: sans-serif;
- }
- .loginForm input:focus{
-   outline: none;
- }
- ::placeholder{
-   color: #fff;
-   font-family: Arial;
- }
- .loginForm p a{
-   cursor: pointer;
- }
-.loginBtnn
-{
+.loginForm {
+  width: 280px;
+  height: 500px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  position: absolute;
+  top: -45px;
+  left: 870px;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.loginForm h2 {
+  width: 220px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #000;
+  font-size: 22px;
+  background-color: #ff7200;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 8px;
+}
+
+.loginForm input {
+  width: 240px;
+  height: 35px;
+  background: transparent;
+  border-bottom: 1px solid #ff7200;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  font-family: sans-serif;
+}
+
+.loginForm input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: #fff;
+  font-family: Arial;
+}
+
+.loginForm p a {
+  cursor: pointer;
+}
+
+.loginBtnn {
   width: 240px;
   height: 40px;
   background: linear-gradient(182deg, #ff7200, #ff745b);
@@ -196,22 +220,50 @@ ul li a:hover {
   transition: 0.5s ease;
   font-weight: bold;
 }
-.loginBtnn:hover{
+
+.loginBtnn:hover {
   background: #fff;
   font-weight: bolder;
 }
-.loginForm .loginLink{
+
+.loginForm .loginLink {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   padding-top: 20px;
   text-align: center;
 }
-.loginForm .loginLink a{
+
+.loginForm .loginLink a {
   text-decoration: none;
   color: #ff7200;
- }
-.liw{
+}
+
+.liw {
   padding-top: 15px;
   padding-bottom: 10px;
   text-align: center;
+}
+
+.form-select {
+  width: 240px;
+  height: 35px;
+  background: transparent;
+  border-bottom: 1px solid #ff7200;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+}
+option {
+  width: 240px;
+  height: 35px;
+  background-color:rgba(0, 0, 0, 0.8);
+  padding-left: 5px;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
 }

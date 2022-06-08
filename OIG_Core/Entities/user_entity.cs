@@ -12,5 +12,13 @@ namespace OIG_Core.Entities
         public string email { get; set; }
         public string password { get; set; }
         public string role { get; set; }
+        public string firmName { get; set; }
+        public string since { get; set; }
+        public string rating { get; set; }
+        public string skills { get; set; }
+        public string status { get; set; }
+        public string contact { get; set; }
+        public string country { get; set; }
+        public string description { get; set; }
     }
 }

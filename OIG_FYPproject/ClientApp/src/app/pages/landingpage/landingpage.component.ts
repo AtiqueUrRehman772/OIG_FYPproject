@@ -9,7 +9,11 @@ export class LandingpageComponent implements OnInit {
 
   constructor() { }
 
+  showLoader:boolean = true;
   ngOnInit() {
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 750);
   }
 
 }

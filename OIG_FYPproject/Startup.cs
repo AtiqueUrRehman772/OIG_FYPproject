@@ -30,6 +30,7 @@ namespace OIG_FYPproject
             });
             services.AddTransient<Iuser, user>();
             services.AddTransient<IRequest, Request>();
+            services.AddTransient<Ibusiness, business>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

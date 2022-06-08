@@ -1,4 +1,7 @@
-<div class="loginMain">
+<div class="containerr" *ngIf="showLoader == true">
+  <div class="loader"></div>
+</div>
+<div class="loginMain" *ngIf="showLoader == false">
   <div class="loginNavbar">
     <div class="loginIcon">
       <h2 class="loginLogo">Melody</h2>
@@ -25,16 +28,33 @@
     <button class="loginCn">JOIN US</button>
     <form [formGroup]="registerForm" class="loginForm">
       <h2>Welcome</h2>
-      <input type="text" id="userName" formControlName="userName" required name="userName" placeholder="Enter Your Name Here">
+      <input type="text" id="userName" formControlName="userName" required name="userName"
+        placeholder="Enter Your Name Here">
       <input type="email" id="email" formControlName="email" required name="email" placeholder="Enter Email Here">
-      <input type="password" id="password" name="password" formControlName="password" required placeholder="Enter Password Here">
+      <input type="password" id="password" name="password" formControlName="password" required
+        placeholder="Enter Password Here">
+      <div class="col-sm-6">
+        <div class="form-check form-check-warning">
+          <label class="form-check-label"></label>
+          <select class="form-select" formControlName="country" name="country" id="Country">
+            <option>---- Select Country ----</option>
+            <option *ngFor="let item of countries">{{item}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-check form-check-warning">
+          <label class="form-check-label"></label>
+          <select class="form-select" formControlName="userType" id="userType">
+            <option>---- Select Account Type ----</option>
+            <option *ngFor="let item of accountType">{{item}}</option>
+          </select>
+        </div>
+      </div>
       <button class="loginBtnn" (click)="registerUser()">Create Account</button>
       <p class="loginLink">Already have an account?<br>
-      <a routerLink="/login">Login </a>here</p>
-      <p class="liw">Log in with</p>
-      <div class="loginIcon">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-      </div>
+        <a routerLink="/login">Login </a>here
+      </p>
     </form>
   </div>
 </div>

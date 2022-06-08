@@ -9,7 +9,7 @@ export class LoginUserService {
 constructor(private http: HttpClient) { }
 
 loginUser(email:string,password:string) {
-  return this.http.post("https://localhost:44325/api/User/login", { email : email ,password:password })
+  return this.http.post("https://localhost:44302/api/User/login", { email : email ,password:password })
 }
 
 }

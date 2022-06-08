@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class UserRegisterService {
   constructor(private http: HttpClient) {}
 
-  registerUser(userName:string,email:string,password:string) {
-    return this.http.post("https://localhost:44325/api/User/register", { userName: userName ,email : email ,password:password })
+  registerUser(userName:string,email:string,password:string,userType:string,country:string) {
+    return this.http.post("https://localhost:44302/api/User/register", { userName: userName ,email : email ,password:password,role: userType,country: country})
   }
 }

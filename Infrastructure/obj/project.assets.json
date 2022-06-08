@@ -1009,19 +1009,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RAO\\.nuget\\packages\\": {}
+    "C:\\Users\\Mega Providers\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "F:\\OIG_FYPproject\\OIG_FYPproject\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\RAO\\.nuget\\packages\\",
-      "outputPath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\Infrastructure\\obj\\",
+      "projectPath": "F:\\OIG_FYPproject\\OIG_FYPproject\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Mega Providers\\.nuget\\packages\\",
+      "outputPath": "F:\\OIG_FYPproject\\OIG_FYPproject\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\RAO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mega Providers\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1035,8 +1040,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {
-              "projectPath": "D:\\Angular\\OIG_FYP\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj"
+            "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj": {
+              "projectPath": "F:\\OIG_FYPproject\\OIG_FYPproject\\OIG_Core\\OIG_Core.csproj"
             }
           }
         }
@@ -1079,7 +1084,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,7 +1,7 @@
 import { LoginUserService } from '../services/login/loginUser.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +9,21 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private userLogin: LoginUserService,private router:Router) {  }
-
-
+  constructor(private userLogin: LoginUserService, private router: Router) { }
   ngOnInit() {
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 750);
   }
 
   loginForm = new FormGroup({
-    password: new FormControl(""),
-    email: new FormControl(""),
+    password: new FormControl("",Validators.required),
+    email: new FormControl("",Validators.required),
   });
-result:any = {userName:"",email:"",password:""};
+  showLoader: boolean = true;
+  result: any = { userName: "", email: "", password: "" };
   loginUser() {
-    this.result = this.userLogin
+    this.userLogin
       .loginUser(
         this.loginForm.value.email,
         this.loginForm.value.password
@@ -29,19 +31,36 @@ result:any = {userName:"",email:"",password:""};
       .subscribe(
         data => {
           this.result = data;
-          if(this.result.userName == "admin"){
+          console.log(data);
+          if (this.result.userName == "admin") {
+            sessionStorage.setItem('Id',this.loginForm.value.email);
             this.router.navigateByUrl("/adminDashboard");
           }
-          else if(this.result.userName == "advisor"){
+          else if (this.result.userName == "advisor") {
+            sessionStorage.setItem('Id',this.loginForm.value.email);
             this.router.navigateByUrl("/advisorHomePage");
           }
-          else if(this.result.userName == "investor"){
+          else if (this.result.userName == "investor") {
+            sessionStorage.setItem('Id',this.loginForm.value.email);
             this.router.navigateByUrl("/investorHomePage");
+          }
+          else if (this.result.userName == "owner") {
+            sessionStorage.setItem('Id',this.loginForm.value.email);
+            this.router.navigateByUrl("/bussinessOwnerHomepage");
+          }
+          else {
+            alert('Invalid credentials for Login');
           }
         },
         (error) => {
           console.error(error);
         }
       );
+  }
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 }
