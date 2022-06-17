@@ -1,0 +1,597 @@
+<div class="containerr" *ngIf="showLoader == true">
+  <div class="loader"></div>
+</div>
+<div class="container-scroller" *ngIf="showLoader == false">
+  <nav class="navbar horizontal-layout-navbar fixed-top navbar-expand-lg">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+      <a class="navbar-brand brand-logo"><img src="../../../assets/images/logo.svg" alt="logo" /></a>
+      <a class="navbar-brand brand-logo-mini"><img src="../../../assets/images/logo-mini.svg" alt="logo" /></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex flex-grow">
+      <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
+            Requests
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getHiringRequests()">
+              <i class="fa fa-user-astronaut mr-2 text-primary"></i>
+              Investor Requests
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="getRequestsHistory()">
+              <i class="fa fa-user-astronaut mr-2 text-primary"></i>
+              Request History
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="employees-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
+            Business Catalogue
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-building mr-2 text-primary"></i>
+              Property
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-car mr-2 text-primary"></i>
+              Cars
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-school mr-2 text-primary"></i>
+              School
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-seedling mr-2 text-primary"></i>
+              Agriculture
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-hotel mr-2 text-primary"></i>
+              Restaurants
+            </a>
+          </div>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+            Rankings
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-star mr-2 text-primary"></i>
+              Advisors Rankings
+            </a>
+          </div>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown"
+            aria-expanded="false">
+            Business
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown" style="cursor: pointer;">
+            <a class="dropdown-item" (click)="getAllBusiness()">
+              <i class="fa fa-star mr-2 text-primary"></i>
+              Available Businesses
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="getAdvisorBusiness()">
+              <i class="fa fa-car mr-2 text-primary"></i>
+              Advised By Me
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile">
+          <a class="nav-link" style="cursor: pointer;" (click)="showProfile()">
+            <div class="nav-profile-text">
+              {{users.email}}
+            </div>
+            <div class="nav-profile-img">
+              <img src="../../../assets/images/faces/face20.jpg" alt="image" class="img-xs rounded-circle ml-3">
+              <span class="availability-status online"></span>
+            </div>
+          </a>
+        </li>
+        <!-- <li class="nav-item nav-search">
+          <div class="nav-link">
+            <div class="search-field d-none d-md-block">
+              <form class="d-flex align-items-stretch h-100" action="#">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Search your projects ...">
+                </div>
+              </form>
+            </div>
+          </div>
+        </li> -->
+        <li class="nav-item" style="cursor: pointer;">
+          <a class="nav-link" (click)="logout()">
+            <i class="fas fa-power-off font-weight-bold icon-sm"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper" style="min-height: 100vh;"
+    *ngIf="profile == false && tblHiringRequests == false && tblBusiness==false;">
+    <div class="page-header">
+      <h3 class="page-title">
+        Dashboard
+      </h3>
+    </div>
+    <div class="row grid-margin">
+      <div class="col-12">
+        <div class="card card-statistics">
+          <div class="card-body">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fa fa-user mr-2"></i>
+                  New Orders
+                </p>
+                <h2>54000</h2>
+                <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-circle-notch mr-2"></i>
+                  Pending
+                </p>
+                <h2>7500</h2>
+                <label class="badge badge-outline-danger badge-pill">16% decrease</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
+                  Completed
+                </p>
+                <h2>3500</h2>
+                <label class="badge badge-outline-success badge-pill">12% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-check-circle mr-2"></i>
+                  Update
+                </p>
+                <h2>7500</h2>
+                <label class="badge badge-outline-success badge-pill">57% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-chart-line mr-2"></i>
+                  Sales
+                </p>
+                <h2>9000</h2>
+                <label class="badge badge-outline-success badge-pill">10% increase</label>
+              </div>
+              <div class="statistics-item">
+                <p>
+                  <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                  Avg Time
+                </p>
+                <h2 style="font-size: 23px;">{{time.email}}</h2>
+                <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card">
+          <div class="card-body">
+
+          </div>
+        </div> -->
+  </div>
+  <div class="content-wrapper"  *ngIf="profile == true">
+    <div class="page-header">
+      <h3 class="page-title">
+        Profile
+      </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">{{users.email}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="border-bottom text-center pb-4">
+                  <img src="../../../assets/images/faces/face12.jpg" alt="profile" class="img-lg rounded-circle mb-3" />
+                  <p>{{profileDetails.description}}</p>
+                  <div class="d-flex justify-content-between">
+                    <span>{{profileDetails.userName}}</span>
+                    <!-- <span>Rating : {{profileDetails.rating}}</span> -->
+                    <span style="color: goldenrod; font-size: 10pt;">
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 0"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 1"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 2"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 3"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 4"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 5"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 6"></i>
+                      <i class="fa fa-star" *ngIf="profileDetails.rating > 7"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="border-bottom py-4">
+                  <p>Skills</p>
+                  <div>
+                    <label style="margin-left: 8px;" *ngFor="let item of skills"
+                      class="badge badge-outline-dark">{{item}}</label>
+                  </div>
+                </div>
+                <div class="border-bottom py-4">
+                  <div class="d-flex mb-3">
+                    <div class="progress progress-md flex-grow">
+                      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="55" style="width: 55%"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <div class="d-flex">
+                    <div class="progress progress-md flex-grow">
+                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" style="width: 75%"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="py-4">
+                  <p class="clearfix">
+                    <span class="float-left">
+                      Status
+                    </span>
+                    <span class="float-right text-muted">
+                      {{profileDetails.status}}
+                    </span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left">
+                      Phone
+                    </span>
+                    <span class="float-right text-muted">
+                      {{profileDetails.contact}}
+                    </span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left">
+                      Mail
+                    </span>
+                    <span class="float-right text-muted">
+                      {{profileDetails.email}}
+                    </span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left">
+                      Firm Name
+                    </span>
+                    <span class="float-right text-muted">
+                      <a href="#">{{profileDetails.firmName}}</a>
+                    </span>
+                  </p>
+                  <p class="clearfix">
+                    <span class="float-left">
+                      Since
+                    </span>
+                    <span class="float-right text-muted">
+                      {{profileDetails.since}}
+                    </span>
+                  </p>
+                </div>
+                <button class="btn btn-primary btn-block">Preview</button>
+              </div>
+              <div class="col-lg-8 pl-lg-5">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h3>{{profileDetails.userName}}</h3>
+                    <div class="d-flex align-items-center">
+                      <h5 class="mb-0 mr-2 text-muted">{{profileDetails.country}}</h5>
+                    </div>
+                  </div>
+                  <div>
+                    <i class="fa fa-times" style="margin:10px;cursor: pointer;" (click)="hideProfile()"></i>
+                  </div>
+                </div>
+                <div class="mt-4 py-2 border-top border-bottom">
+                  <ul class="nav profile-navbar">
+                    <li class="nav-item">
+                      <a class="nav-link" style="cursor:pointer" (click)="showProgressSummary()">
+                        <i class="fa fa-user"></i>
+                        Available Businesses
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" style="cursor:pointer" (click)="editProfile()">
+                        <i class="fa fa-pen"></i>
+                        Edit Profile
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="profile-feed">
+                  <div class="d-flex align-items-start profile-feed-item">
+                    <div class="card" style="width: 100%;">
+                      <div class="card-body" *ngIf="profileEdit == false">
+                        <h4 class="card-title">My Businesses</h4>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="table-responsive">
+                              <table id="order-listing" class="table">
+                                <thead>
+                                  <tr class="bg-primary text-white">
+                                    <th>Title</th>
+                                    <th>Owner</th>
+                                    <th>Owner Email</th>
+                                    <th>Category</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of business">
+                                    <td>{{item.bName}}</td>
+                                    <td>{{item.bOwner}}</td>
+                                    <td>{{item.status}}</td>
+                                    <td>{{item.bCategory}}</td>
+                                    <td>{{item.address}}</td>
+                                    <td>
+                                      <label class="badge badge-info">On hold</label>
+                                    </td>
+                                    <td class="text-right" style="padding: 0;">
+                                      <button class="btn btn-light" style="padding-top: 4px;padding-bottom: 4px;padding-left: 2px;
+                                        padding-right: 2px;
+                                        margin: 2px;">
+                                        <i class="fa fa-eye text-primary"></i>View
+                                      </button>
+                                      <button class="btn btn-light" style="padding-top: 4px;padding-bottom: 4px;padding-left: 2px;
+                                        padding-right: 2px;
+                                        margin: 2px;">
+                                        <i class="fa fa-times text-danger"></i>Remove
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body" *ngIf="profileEdit">
+                        <h4 class="card-title">Edit Profile </h4>
+                        <p class="card-description">
+                          {{users.email}} (Profile Details)
+                        </p>
+                        <form [formGroup]="userEdit" class="forms-sample" (ngSubmit)="updateProfileChanges()">
+                          <div class="form-group row">
+                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">User Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" formControlName="userName" value="{{profileDetails.userName}}" class="form-control" id="exampleInputUsername2" placeholder="Username">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Contact #.</label>
+                            <div class="col-sm-9">
+                              <input type="text" formControlName="contact" value="{{profileDetails.contact}}" class="form-control" id="exampleInputEmail2" placeholder="Contact no.">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Firm Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" formControlName="firmName" value="{{profileDetails.firmName}}" class="form-control" id="exampleInputMobile"
+                                placeholder="Firm Name">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Skills</label>
+                            <div class="col-sm-9">
+                              <input type="text" formControlName="skills" value="{{profileDetails.skills}}" class="form-control" id="exampleInputPassword2"
+                                placeholder="Add New Skill ( Must be ' , ' Seperated )">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                              <textarea type="text" formControlName="description" value="{{profileDetails.description}}" class="form-control" id="exampleInputPassword2"
+                                placeholder="Describe your-self"></textarea>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                          <button type="reset" class="btn btn-light">Cancel</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="min-height: 100vh;" *ngIf="tblHiringRequests == true">
+    <div class="card-body">
+      <h4 class="card-title" style="float: left;">Requests</h4>
+      <div style="right: 5px;right: 5px;text-align: right;margin-bottom: 30px;"><i style="cursor: pointer;"
+          class="fa fa-times" (click)="hideHiringRequests()"></i></div>
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive" style="overflow-y: hidden;">
+            <table id="order-listing1" class="table">
+              <thead>
+                <tr>
+                  <th>Investor Id</th>
+                  <th>Requested On</th>
+                  <th>Request Status</th>
+                  <th>Business Id</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of hiringRequests">
+                  <td>{{item.userEmail}}</td>
+                  <td>{{item.userPassword}}</td>
+                  <td>{{item.requestStatus}}</td>
+                  <td>{{item.userRole}}</td>
+                  <td><button style="margin-right: 10px;" (click)="acceptHiringRequest(item.userEmail)"
+                      class="btn btn-success btn-icon-text"><i
+                        class="far fa-check-square btn-icon-prepend"></i>Accept</button><button
+                      class="btn btn-danger btn-icon-text" (click)="rejectHiringRequest(item.userEmail)"><i
+                        class="fa fa-exclamation-triangle btn-icon-prepend"></i>Reject</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top: 73px;min-height: 100vh;" *ngIf="tblBusiness==true">
+    <div class="card-body">
+      <h4 class="card-title" style="float: left;">Available Business</h4>
+      <div style="float:right; right: 5px;right: 5px;text-align: right;margin-bottom: 30px;" (click)="hideBusiness()">
+        <i style="cursor: pointer;" class="fa fa-times"></i>
+      </div>
+      <div class="row" style="width: 75%;float:right;">
+        <div class="col-sm-5">
+          <form [formGroup]="bCat">
+            <select formControlName="category" class="form-control" name="category" id="Category">
+              <option>Food</option>
+              <option>Property</option>
+              <option>Vehicles</option>
+            </select>
+          </form>
+        </div>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Risk you can afford . . "
+              [(ngModel)]="riskPercentage" />
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-inverse-dark btn-icon"(click)="getFilteredBusiness()"><i
+              class="fas fa-filter"></i></button>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Bussiness Title</th>
+                  <th>Owner Name</th>
+                  <th>Owner Email</th>
+                  <th>Category</th>
+                  <th>Address</th>
+                  <th>Since</th>
+                  <th>RiskFactor</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of business">
+                  <td>1</td>
+                  <td>{{item.bName}}</td>
+                  <td>{{item.bOwner}}</td>
+                  <td>{{item.status}}</td>
+                  <td>{{item.bCategory}}</td>
+                  <td>{{item.address}}</td>
+                  <td>{{item.registeredOn}}</td>
+                  <td>
+                    <div class="br-wrapper br-theme-bars-1to10">
+                      <select id="example-1to10" name="rating" autocomplete="off">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7" selected="selected">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select>
+                      <div class="br-widget">
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="1"
+                          *ngIf="item.riskFactor < 1" data-rating-text="1" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="1" *ngIf="item.riskFactor > 0"
+                          data-rating-text="1" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="2"
+                          *ngIf="item.riskFactor < 2" data-rating-text="2" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="2" *ngIf="item.riskFactor > 1"
+                          data-rating-text="2" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="3"
+                          *ngIf="item.riskFactor < 3" data-rating-text="3" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="3" *ngIf="item.riskFactor > 2"
+                          data-rating-text="3" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="4"
+                          *ngIf="item.riskFactor < 4" data-rating-text="4" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="4" *ngIf="item.riskFactor > 3"
+                          data-rating-text="4" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="5"
+                          *ngIf="item.riskFactor < 5" data-rating-text="5" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="5" *ngIf="item.riskFactor > 4"
+                          data-rating-text="5" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="6"
+                          *ngIf="item.riskFactor < 6" data-rating-text="6" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="6" *ngIf="item.riskFactor > 5"
+                          data-rating-text="6" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="7"
+                          *ngIf="item.riskFactor < 7" data-rating-text="7" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="7" *ngIf="item.riskFactor > 6"
+                          data-rating-text="7" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="8"
+                          *ngIf="item.riskFactor < 8" data-rating-text="8" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="8" *ngIf="item.riskFactor > 7"
+                          data-rating-text="8" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="9"
+                          *ngIf="item.riskFactor < 9" data-rating-text="9" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="9" *ngIf="item.riskFactor > 8"
+                          data-rating-text="9" class="br-selected"></a>
+                        <a href="#" style="background-color: red; opacity: 0.4;" data-rating-value="10"
+                          *ngIf="item.riskFactor < 10" data-rating-text="10" class=""></a>
+                        <a href="#" style="background-color: red;" data-rating-value="10" *ngIf="item.riskFactor > 9"
+                          data-rating-text="10" class="br-selected"></a>
+                        <div class="br-current-rating">{{item.riskFactor}}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><button class="btn btn-outline-info" (click)="rateRisk(item.bId)">Rate Risk</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
+          href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+    </div>
+  </footer>
+  <!-- partial -->
+  <!-- main-panel ends -->
+  <!-- page-body-wrapper ends -->
+</div>

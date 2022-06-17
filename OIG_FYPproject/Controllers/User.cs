@@ -31,9 +31,9 @@ namespace OIG_FYPproject.Controllers
             return obj;
         }
         [HttpPost("register")]
-        public bool addUser([FromBody] user_entity obj)
+        public user_entity addUser([FromBody] user_entity obj)
         {
-            bool x = _user.register(obj);
+            user_entity x = _user.register(obj);
             return x;
         }
         [HttpGet("getUserCount")]
@@ -78,7 +78,13 @@ namespace OIG_FYPproject.Controllers
         [HttpGet("getAllAdvisors")]
         public List<advisor> getAllAdvisors()
         {
-            List<advisor> list = _user.getAllAdvisors();
+            List<advisor> list = _user.getAllAdvisors(Id.email);
+            return list;
+        }
+        [HttpGet("getMyAdvisors")]
+        public List<advisor> getMyAdvisors()
+        {
+            List<advisor> list = _user.getMyAdvisors(Id.email);
             return list;
         }
         [HttpPost("deleteUser")]
@@ -114,5 +120,17 @@ namespace OIG_FYPproject.Controllers
             return obj;
         }
 
+        [HttpPost("revealInvestors")]
+        public List<user_entity> revealInvestors([FromBody] user_entity obj)
+        {
+            List<user_entity> response = _user.revealInvestors(obj,Id.email);
+            return response;
+        }
+        [HttpPost("getAdvisorInfo")]
+        public user_entity getAdvisorInfo([FromBody] user_entity obj)
+        {
+            user_entity x = _user.getAdvisorInfo(obj);
+            return x;
+        }
     }
 }

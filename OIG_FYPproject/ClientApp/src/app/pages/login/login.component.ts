@@ -2,6 +2,7 @@ import { LoginUserService } from '../services/login/loginUser.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +50,11 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl("/bussinessOwnerHomepage");
           }
           else {
-            alert('Invalid credentials for Login');
+            Swal.fire(
+              'Login Failed',
+              'Invalid Credentials !',
+              'error'
+            )
           }
         },
         (error) => {

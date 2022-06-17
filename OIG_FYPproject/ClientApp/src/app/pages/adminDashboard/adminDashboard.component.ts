@@ -379,7 +379,7 @@ export class AdminDashboardComponent implements OnInit {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
-          'Request is still pending !)',
+          'Request is still pending !',
           'error'
         )
       }
@@ -397,13 +397,17 @@ export class AdminDashboardComponent implements OnInit {
       if (result.value) {
         this.getRequests.acceptRequest(reqId).subscribe(
           data => {
-            if (role == "investor") {
+            console.log(role);
+            if (role == "Investor") {
               this.getInvestorRequests();
             }
-            else if (role == "advisor") {
+            else if (role == "Advisor") {
               this.getAdvisorRequests();
             }
-            this.requests = data;
+            else if (role == "owner") {
+              //console.log('asjhdasjdhw');
+              this.getOwnerRequests();
+            }
           },
           (error) => {
             console.error(error);

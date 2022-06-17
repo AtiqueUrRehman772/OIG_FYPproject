@@ -20,9 +20,13 @@ namespace Infrastructure.Interface
         public List<request_entity> getRequestsHistory(request_entity reqId);
         
         //////////     CRUD Operations Prototype    ///////////
-        public bool declineRequest(request_entity reqId);
-        public bool acceptRequest(request_entity reqId);
+        public void declineRequest(request_entity reqId);
+        public void acceptRequest(request_entity reqId);
         public bool acceptHiringRequest(request_entity reqId);
         public bool rejectHiringRequest(request_entity reqId);
+        public List<request_entity> getInvestmentRequests(request_entity reqId);
+        public List<request_entity> getInvestmentRequestsHistory(request_entity reqId);
+        public bool acceptInvestmentRequest(request_entity reqId);
+        public bool declineInvestmentRequest(request_entity reqId);
     }
 }

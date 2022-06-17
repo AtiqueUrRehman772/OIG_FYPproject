@@ -25,6 +25,12 @@ namespace OIG_FYPproject.Controllers
             bool response = _business.addNewBusiness(obj);
             return response;
         }
+        [HttpPost("markComplete")]
+        public bool markComplete(business_entity obj)
+        {
+            bool response = _business.markComplete(obj);
+            return response;
+        }
         [HttpGet("getAvailableBusiness")]
         public List<business_entity> getAvailableBusiness()
         {
@@ -43,6 +49,12 @@ namespace OIG_FYPproject.Controllers
             List<business_entity> list = _business.getMyBusinesses(obj);
             return list;
         }
+        [HttpPost("getClosedBusiness")]
+        public List<business_entity> getClosedBusiness(business_entity obj)
+        {
+            List<business_entity> list = _business.getClosedBusiness(obj);
+            return list;
+        }
         [HttpPost("getAdvisorBusiness")]
         public List<business_entity> getAdvisorBusiness(business_entity obj)
         {
@@ -53,6 +65,12 @@ namespace OIG_FYPproject.Controllers
         public List<business_entity> getFilteredBusiness(business_entity obj)
         {
             List<business_entity> list = _business.getFilteredBusiness(obj);
+            return list;
+        }
+        [HttpPost("getAssociatedAdvisors")]
+        public List<user_entity> getAssociatedAdvisors(business_entity obj)
+        {
+            List<user_entity> list = _business.getAssociatedAdvisors(obj);
             return list;
         }
         [HttpPost("hireAdvisor")]

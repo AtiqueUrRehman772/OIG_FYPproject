@@ -26,12 +26,12 @@
       Invest the way you want.We can show you how.
     </p>
     <button class="loginCn">JOIN US</button>
-    <form [formGroup]="registerForm" class="loginForm">
+    <form [formGroup]="registerForm" id="loginForm" class="loginForm">
       <h2>Welcome</h2>
-      <input type="text" id="userName" formControlName="userName" required name="userName"
+      <input type="text" id="userName" formControlName="userName" name="userName"
         placeholder="Enter Your Name Here">
-      <input type="email" id="email" formControlName="email" required name="email" placeholder="Enter Email Here">
-      <input type="password" id="password" name="password" formControlName="password" required
+      <input type="email" id="email" formControlName="email" name="email" placeholder="Enter Email Here">
+      <input type="password" id="password" (input)="passLengthUpdate()" name="password" minlength="6" formControlName="password"
         placeholder="Enter Password Here">
       <div class="col-sm-6">
         <div class="form-check form-check-warning">
@@ -51,7 +51,10 @@
           </select>
         </div>
       </div>
-      <button class="loginBtnn" (click)="registerUser()">Create Account</button>
+      <p class="loginLink" style="color: red;font-size: 10pt;" *ngIf="passLength <= 5">Password Strength : Weak</p>
+      <p class="loginLink" style="color: orange;font-size: 10pt;" *ngIf="passLength > 5 && passLength < 8">Password Strength : Normal</p>
+      <p class="loginLink" style="color: greenyellow;font-size: 10pt;" *ngIf="passLength >= 8">Password Strength : Strong</p>
+      <button class="loginBtnn" *ngIf="passLength > 5" (click)="registerUser()">Create Account</button>
       <p class="loginLink">Already have an account?<br>
         <a routerLink="/login">Login </a>here
       </p>

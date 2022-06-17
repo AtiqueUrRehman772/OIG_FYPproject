@@ -1,497 +1,617 @@
 <div class="containerr" *ngIf="showLoader == true">
   <div class="loader"></div>
 </div>
-<div class="container-scroller" *ngIf="showLoader == false">
-  <nav class="navbar horizontal-layout-navbar fixed-top navbar-expand-lg">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-      <a class="navbar-brand brand-logo"><img src="../../../assets/images/logo.svg" alt="logo" /></a>
-      <a class="navbar-brand brand-logo-mini"><img src="../../../assets/images/logo-mini.svg" alt="logo" /></a>
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+  <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+    <div style="background-color:#1a5db4ea;color: white;opacity: 0.78;"
+      class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+      <!-- <a class="navbar-brand brand-logo" href="index-2.html"><img src="../../../assets/images/MySiteLogo.png" alt="logo"/></a>
+      <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="../../../assets/images/MySiteLogo.png" alt="logo"/></a> -->
+      <h4>𝕰𝖆𝖗𝖓 𝕺𝖓𝖑𝖎𝖓𝖊</h4>
     </div>
-    <div class="navbar-menu-wrapper d-flex flex-grow">
-      <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
+    <div style="background-color:#1a5db4ea;color: white;opacity: 0.79;"
+      class="navbar-menu-wrapper d-flex align-items-stretch">
+      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+        <span class="fas fa-bars"></span>
+      </button>
+      <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown"
-            aria-expanded="false">
-            Portfolio
-          </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
-            <a class="dropdown-item" style="cursor: pointer;" routerLink="/profile">
-              <i class="fa fa-user-astronaut mr-2 text-primary"></i>
-              Portfolio
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-user-edit mr-2 text-primary"></i>
-              Edit Profile
-            </a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="employees-dropdown" data-toggle="dropdown"
-            aria-expanded="false">
-            Business Catalogue
-          </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-building mr-2 text-primary"></i>
-              Property
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-car mr-2 text-primary"></i>
-              Cars
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fa fa-school mr-2 text-primary"></i>
-              School
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-seedling mr-2 text-primary"></i>
-              Agriculture
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-hotel mr-2 text-primary"></i>
-              Restaurants
-            </a>
-          </div>
-        </li>
-        <!-- <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item" style="cursor: pointer;">
-            <a class="nav-link dropdown-toggle active">
-              My Businesses
-            </a>
-          </li>
-        </ul> -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown"
-            aria-expanded="false">
-            My Businesses
-          </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
-            <a class="dropdown-item" style="cursor: pointer;" (click)="getMyBusinesses()">
-              <i class="fa fa-star mr-2 text-primary"></i>
-              View Details
-            </a>
-          </div>
-        </li>
-        <li class="nav-item d-none d-lg-flex" style="cursor: pointer;">
-          <a class="nav-link"><span class="btn btn-info" data-toggle="modal" data-target="#exampleModal-2">+ New
-              Business</span></a>
+          <h2>Online Investment Guide</h2>
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item nav-profile">
-          <a class="nav-link" style="cursor: pointer;" (click)="showProfile()">
-            <div class="nav-profile-text">
-              {{users.email}}
-            </div>
-            <div class="nav-profile-img">
-              <img src="../../../assets/images/faces/face20.jpg" alt="image" class="img-xs rounded-circle ml-3">
-              <span class="availability-status online"></span>
-            </div>
+        <li class="nav-item nav-profile dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <img src="../../../assets/images/faces/face13.jpg" alt="profile" />
           </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" style="cursor: pointer;" routerLink="/profile">
+              <i class="fas fa-cog text-primary"></i>
+              Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style="cursor: pointer;" routerLink="/login">
+              <i class="fas fa-power-off text-primary"></i>
+              Logout
+            </a>
+          </div>
         </li>
-        <li class="nav-item" style="cursor: pointer;">
-          <a class="nav-link" (click)="logout()">
-            <i class="fas fa-power-off font-weight-bold icon-sm"></i>
+        <li class="nav-item nav-settings d-none d-lg-block">
+          <a class="nav-link" style="cursor: pointer;" routerLink="/login">
+            <i class="fas fa-power-off"></i>
           </a>
         </li>
       </ul>
+      <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+        data-toggle="offcanvas">
+        <span class="fas fa-bars"></span>
+      </button>
     </div>
   </nav>
-  <div class="content-wrapper" style="margin-top: 73px;min-height: 100vh;" *ngIf="profile == false && showBusinessInfo == false">
-    <div class="page-header">
-      <h3 class="page-title">
-        Dashboard
-      </h3>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_settings-panel.html -->
+    <div class="theme-setting-wrapper">
+      <div style="cursor: pointer;" id="settings-trigger"><span class="nav-item nav-settings d-none d-lg-block"><i
+            class="fas fa-envelope mx-0"></i></span></div>
+      <div id="theme-settings" class="settings-panel">
+        <i class="settings-close fa fa-times"></i>
+        <p class="settings-heading">SIDEBAR SKINS</p>
+        <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+          <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+        </div>
+        <div class="sidebar-bg-options" id="sidebar-dark-theme">
+          <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+        </div>
+        <p class="settings-heading mt-2">HEADER SKINS</p>
+        <div class="color-tiles mx-0 px-4">
+          <div class="tiles primary"></div>
+          <div class="tiles success"></div>
+          <div class="tiles warning"></div>
+          <div class="tiles danger"></div>
+          <div class="tiles info"></div>
+          <div class="tiles dark"></div>
+          <div class="tiles default"></div>
+        </div>
+      </div>
     </div>
-    <div class="row grid-margin">
-      <div class="col-12">
-        <div class="card card-statistics">
-          <div class="card-body">
-            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fa fa-user mr-2"></i>
-                  Total Investors
-                </p>
-                <h2>54000</h2>
-                <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+    <div id="right-sidebar" class="settings-panel">
+      <i class="settings-close fa fa-times"></i>
+      <ul class="nav nav-tabs" id="setting-panel" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab"
+            aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab"
+            aria-controls="chats-section">CHATS</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="setting-content">
+        <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
+          aria-labelledby="todo-section">
+          <div class="add-items d-flex px-3 mb-0">
+            <form class="form w-100">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task-todo">Add</button>
               </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-chart-line mr-2"></i>
-                  Businesses
-                </p>
-                <h2>9000</h2>
-                <label class="badge badge-outline-success badge-pill">10% increase</label>
+            </form>
+          </div>
+          <div class="list-wrapper px-3">
+            <ul class="d-flex flex-column-reverse todo-list">
+              <li>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="checkbox" type="checkbox">
+                    Team review meeting at 3.00 PM
+                  </label>
+                </div>
+                <i class="remove fa fa-times-circle"></i>
+              </li>
+              <li>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="checkbox" type="checkbox">
+                    Prepare for presentation
+                  </label>
+                </div>
+                <i class="remove fa fa-times-circle"></i>
+              </li>
+              <li>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="checkbox" type="checkbox">
+                    Resolve all the low priority tickets due today
+                  </label>
+                </div>
+                <i class="remove fa fa-times-circle"></i>
+              </li>
+              <li class="completed">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="checkbox" type="checkbox" checked>
+                    Schedule meeting for next week
+                  </label>
+                </div>
+                <i class="remove fa fa-times-circle"></i>
+              </li>
+              <li class="completed">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="checkbox" type="checkbox" checked>
+                    Project review
+                  </label>
+                </div>
+                <i class="remove fa fa-times-circle"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="events py-4 border-bottom px-3">
+            <div class="wrapper d-flex mb-2">
+              <i class="fa fa-times-circle text-primary mr-2"></i>
+              <span>Feb 11 2018</span>
+            </div>
+            <p class="mb-0 font-weight-thin text-gray">Creating component page</p>
+            <p class="text-gray mb-0">build a js based app</p>
+          </div>
+          <div class="events pt-4 px-3">
+            <div class="wrapper d-flex mb-2">
+              <i class="fa fa-times-circle text-primary mr-2"></i>
+              <span>Feb 7 2018</span>
+            </div>
+            <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+            <p class="text-gray mb-0 ">Call Sarah Graves</p>
+          </div>
+        </div>
+        <!-- To do section tab ends -->
+        <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+          <div class="d-flex align-items-center justify-content-between border-bottom">
+            <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See
+              All</small>
+          </div>
+          <ul class="chat-list">
+            <li class="list active">
+              <div class="profile"><img src="../../../assets/images/faces/face1.jpg" alt="image"><span
+                  class="online"></span></div>
+              <div class="info">
+                <p>Thomas Douglas</p>
+                <p>Available</p>
               </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                  Pending Projects
-                </p>
-                <h2>7500</h2>
-                <label class="badge badge-outline-danger badge-pill">16% decrease</label>
+              <small class="text-muted my-auto">19 min</small>
+            </li>
+            <li class="list">
+              <div class="profile"><img src="../../../assets/images/faces/face2.jpg" alt="image"><span
+                  class="offline"></span></div>
+              <div class="info">
+                <div class="wrapper d-flex">
+                  <p>Catherine</p>
+                </div>
+                <p>Away</p>
               </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                  Completed Projects
-                </p>
-                <h2>3500</h2>
-                <label class="badge badge-outline-success badge-pill">12% increase</label>
+              <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+              <small class="text-muted my-auto">23 min</small>
+            </li>
+            <li class="list">
+              <div class="profile"><img src="../../../assets/images/faces/face3.jpg" alt="image"><span
+                  class="online"></span></div>
+              <div class="info">
+                <p>Daniel Russell</p>
+                <p>Available</p>
               </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-check-circle mr-2"></i>
-                  Active
-                </p>
-                <h2>7500</h2>
-                <label class="badge badge-outline-success badge-pill">57% increase</label>
+              <small class="text-muted my-auto">14 min</small>
+            </li>
+            <li class="list">
+              <div class="profile"><img src="../../../assets/images/faces/face4.jpg" alt="image"><span
+                  class="offline"></span></div>
+              <div class="info">
+                <p>James Richardson</p>
+                <p>Away</p>
               </div>
-              <div class="statistics-item">
-                <p>
-                  <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                  Avg Time
-                </p>
-                <h2 style="font-size: 23px;">{{time.email}}</h2>
-                <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+              <small class="text-muted my-auto">2 min</small>
+            </li>
+            <li class="list">
+              <div class="profile"><img src="../../../assets/images/faces/face5.jpg" alt="image"><span
+                  class="online"></span></div>
+              <div class="info">
+                <p>Madeline Kennedy</p>
+                <p>Available</p>
+              </div>
+              <small class="text-muted my-auto">5 min</small>
+            </li>
+            <li class="list">
+              <div class="profile"><img src="../../../assets/images/faces/face6.jpg" alt="image"><span
+                  class="online"></span></div>
+              <div class="info">
+                <p>Sarah Graves</p>
+                <p>Available</p>
+              </div>
+              <small class="text-muted my-auto">47 min</small>
+            </li>
+          </ul>
+        </div>
+        <!-- chat tab ends -->
+      </div>
+    </div>
+    <!-- partial -->
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <div class="nav-link">
+            <div class="profile-image">
+              <img src="../../../assets/images/faces/face13.jpg" alt="image" />
+            </div>
+            <div class="profile-name">
+              <p class="name">
+                Welcome
+                <!-- {{business[0].bOwner}} -->
+              </p>
+              <p class="designation">
+                {{users.userName}}
+              </p>
+            </div>
+          </div>
+          <hr>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/bussinessOwnerHomepage" style="cursor: pointer;">
+            <i class="fa fa-home menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <div class="navItems-custom" id="navItemLi-Business">
+            <a class="nav-link" style="cursor: pointer;" id="listItem-Custom-Business" (click)="activate('listItem-Custom-Business','navItemLi-Business','arrow-Business-close')">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">Business</span>
+              <i class="menu-arrow" id="arrow-Business-close"></i>
+            </a>
+            <a class="nav-link" style="cursor: pointer;margin-left: 15px;" (click)="getMyBusinesses()">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">In Progress</span>
+            </a>
+            <a class="nav-link" style="cursor: pointer;margin-left: 15px;" (click)="revealClosedBusiness()">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">Closed</span>
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="navItems-custom" id="navItemLi-Request">
+            <a class="nav-link" style="cursor: pointer;" id="listItem-Custom-Request" (click)="activate('listItem-Custom-Request','navItemLi-Request','arrow-Request-close')">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">Investment Requests</span>
+              <i class="menu-arrow" id="arrow-Request-close"></i>
+            </a>
+            <a class="nav-link" style="cursor: pointer;margin-left: 15px;" (click)="getInvestmentRequests()">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">New Requests</span>
+            </a>
+            <a class="nav-link" style="cursor: pointer;margin-left: 15px;" (click)="getInvestmentRequestsHistory()">
+              <i class="fa fa-user-astronaut menu-icon"></i>
+              <span class="menu-title">Request History</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="main-panel">
+      <!-- <div class="content-wrapper">
+        <div class="page-header">
+          <h3 class="page-title">
+            Dashboard
+          </h3>
+          <h4 style="font-size: 14px; float:right">Time Elapsed : {{time.email}}</h4>
+        </div>
+        <div class="row" style="min-height: 100vh;">
+
+        </div>
+      </div> -->
+      <div class="content-wrapper" style="min-height: 100vh;" *ngIf="profile == false && showBusinessInfo == false && investmentRequests == false">
+        <div class="page-header">
+          <h3 class="page-title">
+            Dashboard
+          </h3>
+          <h4 style="font-size: 14px; float:right">Time Elapsed : {{time.email}}</h4>
+        </div>
+        <div class="col-lg-12 grid-margin stretch-card" style="margin-top: 33px;" *ngIf="businessDtls == true">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-description" style="float: right;">
+                <button title="Add New Business" type="button" class="btn btn-inverse-info btn-icon btn-rounded btn-icon" data-toggle="modal"
+                  data-target="#exampleModal-2">+</button>
+              </p>
+              <h4 class="card-title">Business Summary</h4>
+              <p class="card-description" style="float: left;">
+                Progress by <code>{{users.email}}</code>
+              </p>
+              <div class="table-responsive" style="margin-top:10px;overflow-y: hidden;">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Bussiness Title</th>
+                      <th>Owner Name</th>
+                      <th>Owner Email</th>
+                      <th>Category</th>
+                      <th>Address</th>
+                      <th>Since</th>
+                      <th>RiskFactor</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of business">
+                      <td>
+                        1
+                      </td>
+                      <td>
+                        {{item.bName}}
+                      </td>
+                      <td>
+                        {{item.bOwner}}
+                      </td>
+                      <td>
+                        {{item.bId}}
+                      </td>
+                      <td>
+                        {{item.bCategory}}
+                      </td>
+                      <td>
+                        {{item.address}}
+                      </td>
+                      <td>
+                        {{item.registeredOn}}
+                      </td>
+                      <td style="min-width: 162px;">
+                        <div class="br-wrapper br-theme-bars-1to10">
+                          <select id="example-1to10" name="rating" autocomplete="off">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
+                          <div class="br-widget">
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="1"
+                              *ngIf="item.riskFactor < 1" data-rating-text="1" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="1" *ngIf="item.riskFactor > 0"
+                              data-rating-text="1" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="2"
+                              *ngIf="item.riskFactor < 2" data-rating-text="2" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="2" *ngIf="item.riskFactor > 1"
+                              data-rating-text="2" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="3"
+                              *ngIf="item.riskFactor < 3" data-rating-text="3" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="3" *ngIf="item.riskFactor > 2"
+                              data-rating-text="3" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="4"
+                              *ngIf="item.riskFactor < 4" data-rating-text="4" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="4" *ngIf="item.riskFactor > 3"
+                              data-rating-text="4" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="5"
+                              *ngIf="item.riskFactor < 5" data-rating-text="5" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="5" *ngIf="item.riskFactor > 4"
+                              data-rating-text="5" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="6"
+                              *ngIf="item.riskFactor < 6" data-rating-text="6" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="6" *ngIf="item.riskFactor > 5"
+                              data-rating-text="6" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="7"
+                              *ngIf="item.riskFactor < 7" data-rating-text="7" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="7" *ngIf="item.riskFactor > 6"
+                              data-rating-text="7" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="8"
+                              *ngIf="item.riskFactor < 8" data-rating-text="8" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="8" *ngIf="item.riskFactor > 7"
+                              data-rating-text="8" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="9"
+                              *ngIf="item.riskFactor < 9" data-rating-text="9" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="9" *ngIf="item.riskFactor > 8"
+                              data-rating-text="9" class="br-selected"></a>
+                            <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="10"
+                              *ngIf="item.riskFactor < 10" data-rating-text="10" class=""></a>
+                            <a href="#" style="background-color: red;" data-rating-value="10"
+                              *ngIf="item.riskFactor > 9" data-rating-text="10" class="br-selected"></a>
+                            <div class="br-current-rating">{{item.riskFactor}}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span style="color:dodgerblue;cursor:pointer" title="More Info" (click)="getBusinessInfo(item.ecd)"><i class="fa fa-2x fa-info-circle"></i></span>
+                        <!-- <li class="nav-item nav-settings d-none d-lg-block">
+                          <i class="fas fa-power-off"></i>
+                        </li> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-12 grid-margin stretch-card" style="margin-top: 33px;" *ngIf="businessDtls == true">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Business Summary</h4>
-          <p class="card-description">
-            Progress by <code>{{users.email}}</code>
-          </p>
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Bussiness Title</th>
-                  <th>Owner Name</th>
-                  <th>Owner Email</th>
-                  <th>Category</th>
-                  <th>Address</th>
-                  <th>Since</th>
-                  <th>RiskFactor</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of business">
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    {{item.bName}}
-                  </td>
-                  <td>
-                    {{item.bOwner}}
-                  </td>
-                  <td>
-                    {{item.bId}}
-                  </td>
-                  <td>
-                    {{item.bCategory}}
-                  </td>
-                  <td>
-                    {{item.address}}
-                  </td>
-                  <td>
-                    {{item.registeredOn}}
-                  </td>
-                  <td>
-                    <div class="br-wrapper br-theme-bars-1to10">
-                      <select id="example-1to10" name="rating" autocomplete="off">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                      </select>
-                      <div class="br-widget">
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="1"
-                          *ngIf="item.riskFactor < 1" data-rating-text="1" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="1" *ngIf="item.riskFactor > 0"
-                          data-rating-text="1" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="2"
-                          *ngIf="item.riskFactor < 2" data-rating-text="2" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="2" *ngIf="item.riskFactor > 1"
-                          data-rating-text="2" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="3"
-                          *ngIf="item.riskFactor < 3" data-rating-text="3" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="3" *ngIf="item.riskFactor > 2"
-                          data-rating-text="3" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="4"
-                          *ngIf="item.riskFactor < 4" data-rating-text="4" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="4" *ngIf="item.riskFactor > 3"
-                          data-rating-text="4" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="5"
-                          *ngIf="item.riskFactor < 5" data-rating-text="5" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="5" *ngIf="item.riskFactor > 4"
-                          data-rating-text="5" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="6"
-                          *ngIf="item.riskFactor < 6" data-rating-text="6" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="6" *ngIf="item.riskFactor > 5"
-                          data-rating-text="6" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="7"
-                          *ngIf="item.riskFactor < 7" data-rating-text="7" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="7" *ngIf="item.riskFactor > 6"
-                          data-rating-text="7" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="8"
-                          *ngIf="item.riskFactor < 8" data-rating-text="8" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="8" *ngIf="item.riskFactor > 7"
-                          data-rating-text="8" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="9"
-                          *ngIf="item.riskFactor < 9" data-rating-text="9" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="9" *ngIf="item.riskFactor > 8"
-                          data-rating-text="9" class="br-selected"></a>
-                        <a href="#" style="background-color: red; opacity: 0.2;" data-rating-value="10"
-                          *ngIf="item.riskFactor < 10" data-rating-text="10" class=""></a>
-                        <a href="#" style="background-color: red;" data-rating-value="10" *ngIf="item.riskFactor > 9"
-                          data-rating-text="10" class="br-selected"></a>
-                        <div class="br-current-rating">{{item.riskFactor}}</div>
+      <div class="content-wrapper" *ngIf="profile == true">
+        <div class="page-header">
+          <h3 class="page-title">
+            Profile
+          </h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">{{users.email}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="border-bottom text-center pb-4">
+                      <img src="../../../assets/images/faces/face12.jpg" alt="profile"
+                        class="img-lg rounded-circle mb-3" />
+                      <p>Bureau Oberhaeuser is a design bureau focused on Information- and Interface Design. </p>
+                      <div class="d-flex justify-content-between">
+                        <button class="btn btn-success">Hire Me</button>
+                        <button class="btn btn-success">Follow</button>
                       </div>
                     </div>
-                  </td>
-                  <td><button class="btn btn-outline-info" (click)="getBusinessInfo(item.ecd)">More Info</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="content-wrapper" style="margin-top: 73px;" *ngIf="profile == true">
-    <div class="page-header">
-      <h3 class="page-title">
-        Profile
-      </h3>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">{{users.email}}</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Profile</li>
-        </ol>
-      </nav>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="border-bottom text-center pb-4">
-                  <img src="../../../assets/images/faces/face12.jpg" alt="profile" class="img-lg rounded-circle mb-3" />
-                  <p>Bureau Oberhaeuser is a design bureau focused on Information- and Interface Design. </p>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-success">Hire Me</button>
-                    <button class="btn btn-success">Follow</button>
-                  </div>
-                </div>
-                <div class="border-bottom py-4">
-                  <p>Skills</p>
-                  <div>
-                    <label class="badge badge-outline-dark">Chalk</label>
-                    <label class="badge badge-outline-dark">Hand lettering</label>
-                    <label class="badge badge-outline-dark">Information Design</label>
-                    <label class="badge badge-outline-dark">Graphic Design</label>
-                    <label class="badge badge-outline-dark">Web Design</label>
-                  </div>
-                </div>
-                <div class="border-bottom py-4">
-                  <div class="d-flex mb-3">
-                    <div class="progress progress-md flex-grow">
-                      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="55" style="width: 55%"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="border-bottom py-4">
+                      <p>Skills</p>
+                      <div>
+                        <label class="badge badge-outline-dark">Chalk</label>
+                        <label class="badge badge-outline-dark">Hand lettering</label>
+                        <label class="badge badge-outline-dark">Information Design</label>
+                        <label class="badge badge-outline-dark">Graphic Design</label>
+                        <label class="badge badge-outline-dark">Web Design</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="d-flex">
-                    <div class="progress progress-md flex-grow">
-                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" style="width: 75%"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="border-bottom py-4">
+                      <div class="d-flex mb-3">
+                        <div class="progress progress-md flex-grow">
+                          <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="55" style="width: 55%"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="d-flex">
+                        <div class="progress progress-md flex-grow">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" style="width: 75%"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div class="py-4">
-                  <p class="clearfix">
-                    <span class="float-left">
-                      Status
-                    </span>
-                    <span class="float-right text-muted">
-                      Active
-                    </span>
-                  </p>
-                  <p class="clearfix">
-                    <span class="float-left">
-                      Phone
-                    </span>
-                    <span class="float-right text-muted">
-                      006 3435 22
-                    </span>
-                  </p>
-                  <p class="clearfix">
-                    <span class="float-left">
-                      Mail
-                    </span>
-                    <span class="float-right text-muted">
-                      Jacod@testmail.com
-                    </span>
-                  </p>
-                  <p class="clearfix">
-                    <span class="float-left">
-                      Facebook
-                    </span>
-                    <span class="float-right text-muted">
-                      <a href="#">David Grey</a>
-                    </span>
-                  </p>
-                  <p class="clearfix">
-                    <span class="float-left">
-                      Twitter
-                    </span>
-                    <span class="float-right text-muted">
-                      <a href="#">@davidgrey</a>
-                    </span>
-                  </p>
-                </div>
-                <button class="btn btn-primary btn-block">Preview</button>
-              </div>
-              <div class="col-lg-8 pl-lg-5">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h3>David Grey. H</h3>
-                    <div class="d-flex align-items-center">
-                      <h5 class="mb-0 mr-2 text-muted">Canada</h5>
-                      <select id="profile-rating" name="rating" autocomplete="off">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <!-- <button class="btn btn-outline-secondary btn-icon">
-                          <i class="far fa-envelope"></i>
-                        </button> -->
-                    <button class="btn btn-primary">Request</button>
-                    <i class="fa fa-times" style="margin:10px;cursor: pointer;" (click)="hideProfile()"></i>
-                  </div>
-                </div>
-                <div class="mt-4 py-2 border-top border-bottom">
-                  <ul class="nav profile-navbar">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa fa-user"></i>
-                        Info
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">
-                        <i class="fas fa-file"></i>
-                        Feed
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa fa-calendar"></i>
-                        Agenda
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="far fa-file-word"></i>
-                        Resume
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="profile-feed">
-                  <div class="d-flex align-items-start profile-feed-item">
-                    <img src="../../../assets/images/faces/face13.jpg" alt="profile" class="img-sm rounded-circle" />
-                    <div class="ml-4">
-                      <h6>
-                        Mason Beck
-                        <small class="ml-4 text-muted"><i class="far fa-clock mr-1"></i>10 hours</small>
-                      </h6>
-                      <p>
-                        There is no better advertisement campaign that is low cost and also successful at the same time.
+                    <div class="py-4">
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Status
+                        </span>
+                        <span class="float-right text-muted">
+                          Active
+                        </span>
                       </p>
-                      <p class="small text-muted mt-2 mb-0">
-                        <span>
-                          <i class="fa fa-star mr-1"></i>4
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Phone
                         </span>
-                        <span class="ml-2">
-                          <i class="fa fa-comment mr-1"></i>11
+                        <span class="float-right text-muted">
+                          006 3435 22
                         </span>
-                        <span class="ml-2">
-                          <i class="fa fa-mail-reply"></i>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Mail
+                        </span>
+                        <span class="float-right text-muted">
+                          Jacod@testmail.com
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Facebook
+                        </span>
+                        <span class="float-right text-muted">
+                          <a href="#">David Grey</a>
+                        </span>
+                      </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Twitter
+                        </span>
+                        <span class="float-right text-muted">
+                          <a href="#">@davidgrey</a>
                         </span>
                       </p>
                     </div>
+                    <button class="btn btn-primary btn-block">Preview</button>
                   </div>
-                  <div class="d-flex align-items-start profile-feed-item">
-                    <img src="../../../assets/images/faces/face16.jpg" alt="profile" class="img-sm rounded-circle" />
-                    <div class="ml-4">
-                      <h6>
-                        Willie Stanley
-                        <small class="ml-4 text-muted"><i class="far fa-clock mr-1"></i>10 hours</small>
-                      </h6>
-                      <img src="../../../assets/images/samples/1280x768/12.jpg" alt="sample" class="rounded mw-100" />
-                      <p class="small text-muted mt-2 mb-0">
-                        <span>
-                          <i class="fa fa-star mr-1"></i>4
-                        </span>
-                        <span class="ml-2">
-                          <i class="fa fa-comment mr-1"></i>11
-                        </span>
-                        <span class="ml-2">
-                          <i class="fa fa-mail-reply"></i>
-                        </span>
-                      </p>
+                  <div class="col-lg-8 pl-lg-5">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h3>David Grey. H</h3>
+                        <div class="d-flex align-items-center">
+                          <h5 class="mb-0 mr-2 text-muted">Canada</h5>
+                          <select id="profile-rating" name="rating" autocomplete="off">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+                        <!-- <button class="btn btn-outline-secondary btn-icon">
+                              <i class="far fa-envelope"></i>
+                            </button> -->
+                        <button class="btn btn-primary">Request</button>
+                        <i class="fa fa-times" style="margin:10px;cursor: pointer;" (click)="hideProfile()"></i>
+                      </div>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-start profile-feed-item">
-                    <img src="../../../assets/images/faces/face19.html" alt="profile" class="img-sm rounded-circle" />
-                    <div class="ml-4">
-                      <h6>
-                        Dylan Silva
-                        <small class="ml-4 text-muted"><i class="far fa-clock mr-1"></i>10 hours</small>
-                      </h6>
-                      <p>
-                        When I first got into the online advertising business, I was looking for the magical combination
-                        that would put my website into the top search engine rankings
-                      </p>
-                      <img src="../../../assets/images/samples/1280x768/5.jpg" alt="sample" class="rounded mw-100" />
-                      <p class="small text-muted mt-2 mb-0">
-                        <span>
-                          <i class="fa fa-star mr-1"></i>4
-                        </span>
-                        <span class="ml-2">
-                          <i class="fa fa-comment mr-1"></i>11
-                        </span>
-                        <span class="ml-2">
-                          <i class="fa fa-mail-reply"></i>
-                        </span>
-                      </p>
+                    <div class="mt-4 py-2 border-top border-bottom">
+                      <ul class="nav profile-navbar">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <i class="fa fa-user"></i>
+                            Info
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">
+                            <i class="fas fa-file"></i>
+                            Feed
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <i class="fa fa-calendar"></i>
+                            Agenda
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <i class="far fa-file-word"></i>
+                            Resume
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="profile-feed">
+                      <div class="d-flex align-items-start profile-feed-item">
+                        <img src="../../../assets/images/faces/face13.jpg" alt="profile"
+                          class="img-sm rounded-circle" />
+                        <div class="ml-4">
+                          <h6>
+                            Mason Beck
+                            <small class="ml-4 text-muted"><i class="far fa-clock mr-1"></i>10 hours</small>
+                          </h6>
+                          <p>
+                            There is no better advertisement campaign that is low cost and also successful at the same
+                            time.
+                          </p>
+                          <p class="small text-muted mt-2 mb-0">
+                            <span>
+                              <i class="fa fa-star mr-1"></i>4
+                            </span>
+                            <span class="ml-2">
+                              <i class="fa fa-comment mr-1"></i>11
+                            </span>
+                            <span class="ml-2">
+                              <i class="fa fa-mail-reply"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -500,72 +620,279 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="main-panel" style="margin-top: 73px;min-height: 100vh;width: 100%;" *ngIf="showBusinessInfo">
-    <div class="content-wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card px-2">
-            <div class="card-body">
-              <div class="container-fluid">
-                <h4 class="text-right">Business-{{businessInfo.bCategory}}-{{businessInfo.bId}}<i
-                    style="cursor: pointer; margin-left:25px" class="fa fa-times" (click)="hideBusinessInfo()"></i></h4>
-                <hr>
-              </div>
-              <div class="container-fluid d-flex justify-content-between">
-                <div class="col-lg-3 pl-0">
-                  <p class="mb-2"><b>{{businessInfo.bName}}</b></p>
-                  <p>104,<br>{{businessInfo.address}}</p>
+      <div class="content-wrapper" *ngIf="showBusinessInfo">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card px-2">
+              <div class="card-body">
+                <div class="container-fluid">
+                  <h4 class="text-right">Business-{{businessInfo.bCategory}}-{{businessInfo.bId}}
+                    <span class="btn btn-rounded btn-inverse-danger" style="margin-left:25px"><i style="cursor: pointer;" class="fa fa-times" (click)="hideBusinessInfo()"></i></span>
+                  </h4>
+                  <hr>
                 </div>
-                <div class="col-lg-3 pr-0">
-                  <p class="mb-2 text-right"><b>Business Owner</b></p>
-                  <p class="text-right">{{businessInfo.bOwner}}<br> C-201, Beykoz-34800,<br>{{businessInfo.address}}</p>
+                <div class="container-fluid d-flex justify-content-between">
+                  <div class="col-lg-3 pl-0">
+                    <p class="mb-2"><b>{{businessInfo.bName}}</b></p>
+                    <p>104,<br>{{businessInfo.address}}</p>
+                  </div>
+                  <div class="col-lg-3 pr-0">
+                    <p class="mb-2 text-right"><b>Business Owner</b></p>
+                    <p class="text-right">{{businessInfo.bOwner}}<br> C-201, Beykoz-34800,<br>{{businessInfo.address}}
+                    </p>
+                  </div>
+                </div>
+                <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                  <div class="table-responsive w-100">
+                    <table class="table">
+                      <thead>
+                        <tr class="bg-dark text-white">
+                          <th>#</th>
+                          <th>Description</th>
+                          <th class="text-right">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>5</td><td class="text-left">View Investors</td>
+                          <td class="text-right"><span class="btn btn-sm btn-inverse-info btn-rounded" (click)="revealInvestors(businessInfo.bId)"><i class="fa fa-angle-left"></i>
+                          </span></td>
+                        </tr>
+                        <tr class="text-right">
+                          <td class="text-left">1</td>
+                          <td class="text-left">Progress</td>
+                          <td>{{businessInfo.progress}}</td>
+                        </tr>
+                        <tr class="text-right">
+                          <td class="text-left">2</td>
+                          <td class="text-left">Registeration Date : </td>
+                          <td><span class="text-left">{{businessInfo.registeredOn}}</span></td>
+                        </tr>
+                        <tr class="text-right">
+                          <td class="text-left">3</td>
+                          <td class="text-left">Risk Factor</td>
+                          <td *ngIf="businessInfo.riskFactor <5"><span
+                              class="btn btn-sm btn-inverse-success">{{businessInfo.riskFactor}}</span></td>
+                          <td *ngIf="businessInfo.riskFactor >5"><span
+                              class="btn btn-sm btn-inverse-danger">{{businessInfo.riskFactor}}</span></td>
+                        </tr>
+                        <tr class="text-right">
+                          <td class="text-left">4</td>
+                          <td class="text-left">Status</td>
+                          <td><span class="btn btn-sm btn-warning">{{businessInfo.status}}</span></td>
+                        </tr>
+                        <tr class="text-right" *ngIf="businessInfo.status == 'Incomplete'">
+                          <td class="text-left">5</td>
+                          <td class="text-left">Mark as Complete</td>
+                          <td><span class="btn btn-sm btn-success" title="Close this Business" (click)="markComplete(businessInfo.bId)"><i class="fa fa-print"></i></span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <div class="container-fluid mt-5 d-flex justify-content-center w-100">
-                <div class="table-responsive w-100">
-                  <table class="table">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-custom ml-auto" id="offcanvas-Investors">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8 offcanvas-custom-col">
+            <span class="btn btn-rounded btn-inverse-info btn-sm" style="float: right;font-size: 14pt;margin:15px;cursor: pointer;" (click)="hideInvestors()"><i class="fa fa-angle-right"></i></span>
+            <div class="table-responsive" style="overflow-y: hidden;overflow-x:hidden">
+              <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>Sr.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Amount Invested</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of investorsList;let id = index">
+                    <td>{{id+1}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.contact}}</td>
+                    <td>{{item.description}}</td>
+                    <td style="color:dodgerblue;cursor:pointer"><i class="fa fa-2x fa-info-circle" title="Investor Info"
+                      (click) = "revealInvestorInfo(item.userName,item.email,item.rating,item.country)" ></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-custom ml-auto" id="offcanvas-InvestorInfo">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8 offcanvas-custom-col">
+            <span class="btn btn-rounded btn-inverse-info btn-sm" style="float: right;font-size: 14pt;margin:15px;cursor: pointer;" (click)="hideInvestorInfo()"><i class="fa fa-angle-right"></i></span>
+            <div class="table-responsive" style="overflow-y: hidden;overflow-x:hidden">
+              <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Account Since</th>
+                    <th>Country</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{investorInfo.userName}}</td>
+                    <td>{{investorInfo.email}}</td>
+                    <td>{{investorInfo.since}}</td>
+                    <td>{{investorInfo.country}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel-2">Bussiness Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="addBusiness" class="forms-sample" (ngSubmit)="addNewBusiness()">
+                <div class="form-group">
+                  <label for="bName">Business Name</label>
+                  <input type="text" formControlName="bName" class="form-control" id="bName"
+                    placeholder="Business Name">
+                </div>
+                <div class="form-group">
+                  <label for="bOwner">Owner Name</label>
+                  <input type="text" formControlName="bOwner" class="form-control" id="bOwner" placeholder="Owner Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Category</label>
+                  <select formControlName="bCategory" name="bCategory" class="form-control" id="bCategory">
+                    <!--  [ngValue]="null" -->
+                    <option>Category</option>
+                    <option *ngFor="let item of bCategories">{{item}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="bOwner">Country</label>
+                  <select type="text" formControlName="bCountry" class="form-control" name="bCountry" id="bCountry">
+                    <option>Country</option>
+                    <option *ngFor="let item of countries">{{item}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="bOwner">City</label>
+                  <input type="text" formControlName="bCity" class="form-control" id="bCity" placeholder="Country Name">
+                </div>
+                <div class="form-group">
+                  <label for="bOwner">Address</label>
+                  <input type="text" formControlName="bAddress" class="form-control" id="bAddress"
+                    placeholder="Street Address">
+                </div>
+                <button type="submit" class="btn btn-success" style="margin-right: 10px;">Submit</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="content-wrapper" style="min-height: 100vh;" *ngIf="investmentRequests">
+      </div> -->
+      <div class="offcanvas-custom ml-auto" id="offcanvas-investmentRequests">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8 offcanvas-custom-col">
+            <span class="btn btn-rounded btn-inverse-info btn-sm" style="float: right;font-size: 14pt;margin:15px;cursor: pointer;" (click)="hideInvestmentRequests()"><i class="fa fa-angle-right"></i></span>
+            <div class="table-responsive" style="overflow-y: hidden;overflow-x:hidden">
+              <div class="col-lg-12 grid-margin stretch-card" style="margin-top: 33px;">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Investment Requests</h4>
+                    <p class="card-description" style="float: left;">
+                      Requested to invest for <code>{{users.email}}</code>
+                    </p>
+                    <div class="table-responsive" style="margin-top:10px;overflow-y: hidden;">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Investor Email</th>
+                            <th>Amount</th>
+                            <th>Request Status</th>
+                            <th *ngIf="showInvestmentRequestHistory == false;">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of investmentRequestList;let id = index">
+                            <td>{{id+1}}</td>
+                            <td>{{item.userName}}</td>
+                            <td>{{item.userPassword}}</td>
+                            <td>
+                              <label *ngIf="item.requestStatus == 'Pending'" class="badge badge-warning btn-rounded">{{item.requestStatus}}</label>
+                              <label *ngIf="item.requestStatus == 'In Progress'" class="badge badge-success btn-rounded">Accepted</label>
+                              <label *ngIf="item.requestStatus == 'Declined'" class="badge badge-danger btn-rounded">{{item.requestStatus}}</label>
+                            </td>
+                            <td *ngIf="showInvestmentRequestHistory == false;">
+                              <span class="btn btn-rounded btn-sm btn-inverse-success" (click)="acceptInvestmentRequest(item.userName,item.userRole)"><i class="fa fa-check"></i></span>
+                              <span style="margin-left: 10px;" class="btn btn-rounded btn-sm btn-inverse-danger" (click)="declineInvestmentRequest(item.userName,item.userRole)"><i class="fa fa-times"></i></span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="offcanvas-custom ml-auto" id="offcanvas-closedBusiness">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-10 offcanvas-custom-col">
+            <span class="btn btn-rounded btn-inverse-info btn-sm" style="float: right;font-size: 14pt;margin:15px;cursor: pointer;" (click)="hideClosedBusiness()"><i class="fa fa-angle-right"></i></span>
+            <div class="card" style="margin-top:100px">
+              <div class="card-body">
+                <h4 class="card-title">Closed Businesses</h4>
+                <div class="table-responsive" style="margin-top:10px;overflow-x: hidden;overflow-y: hidden;">
+                  <table class="table table-bordered">
                     <thead>
-                      <tr class="bg-dark text-white">
+                      <tr>
                         <th>#</th>
-                        <th>Description</th>
-                        <th class="text-right">Total</th>
+                        <th>Bussiness Title</th>
+                        <th>Owner Name</th>
+                        <th>Owner Email</th>
+                        <th>Category</th>
+                        <th>Address</th>
+                        <th>Since</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- <tr class="text-right">
-                        <td class="text-left">1</td>
-                        <td class="text-left">Invested Amount</td>
-                        <td>Rs. {{businessInfo.investedAmount}}</td>
-                      </tr> -->
-                      <tr class="text-right">
-                        <td class="text-left">2</td>
-                        <td class="text-left">Progress</td>
-                        <td>{{businessInfo.progress}}</td>
-                      </tr>
-                      <tr class="text-right">
-                        <td class="text-left">5</td>
-                        <td class="text-left">Registeration Date : </td>
-                        <td><span class="text-left">{{businessInfo.registeredOn}}</span></td>
-                      </tr>
-                      <!-- <tr class="text-right">
-                        <td class="text-left">4</td>
-                        <td class="text-left">Estimated Completion Date </td>
-                        <td><span class="text-left">{{businessInfo.ecd}}</span></td>
-                      </tr> -->
-                      <tr class="text-right">
-                        <td class="text-left">3</td>
-                        <td class="text-left">Risk Factor</td>
-                        <td *ngIf="businessInfo.riskFactor <5"><span
-                            class="btn btn-outline-success">{{businessInfo.riskFactor}}</span></td>
-                        <td *ngIf="businessInfo.riskFactor >5"><span
-                            class="btn btn-outline-danger">{{businessInfo.riskFactor}}</span></td>
-                      </tr>
-                      <tr class="text-right">
-                        <td class="text-left">4</td>
-                        <td class="text-left">Status</td>
-                        <td><span class="btn btn-warning">{{businessInfo.status}}</span></td>
+                      <tr *ngFor="let item of closedBusiness;let id=index">
+                        <td>{{id+1}}</td>
+                        <td>{{item.bName}}</td>
+                        <td>{{item.bOwner}}</td>
+                        <td>{{item.bId}}</td>
+                        <td>{{item.bCategory}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.registeredOn}}</td>
+                        <td>
+                          <span style="color:dodgerblue;cursor:pointer" title="More Info" (click)="getBusinessInfo(item.ecd)"><i class="fa fa-2x fa-info-circle"></i></span>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -575,69 +902,19 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- Modal (Add bussiness) -->
-  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel-2">Bussiness Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights
+            reserved.</span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+              class="far fa-heart text-danger"></i></span>
         </div>
-        <div class="modal-body">
-          <form [formGroup]="addBusiness" class="forms-sample" (ngSubmit)="addNewBusiness()">
-            <div class="form-group">
-              <label for="bName">Business Name</label>
-              <input type="text" formControlName="bName" class="form-control" id="bName" placeholder="Business Name">
-            </div>
-            <div class="form-group">
-              <label for="bOwner">Owner Name</label>
-              <input type="text" formControlName="bOwner" class="form-control" id="bOwner" placeholder="Owner Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Category</label>
-              <select type="text" formControlName="bCategory" class="form-control" id="bCategory">
-                <!--  [ngValue]="null" -->
-                <option selected>Category</option>
-                <option value="2">Vehicles</option>
-                <option value="3">Food</option>
-                <option value="4">Property</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="bOwner">Country</label>
-              <input type="text" formControlName="bCountry" class="form-control" id="bCountry"
-                placeholder="Country Name">
-            </div>
-            <div class="form-group">
-              <label for="bOwner">City</label>
-              <input type="text" formControlName="bCity" class="form-control" id="bCity" placeholder="Country Name">
-            </div>
-            <div class="form-group">
-              <label for="bOwner">Address</label>
-              <input type="text" formControlName="bAddress" class="form-control" id="bAddress"
-                placeholder="Country Name">
-            </div>
-            <button type="submit" class="btn btn-success" style="margin-right: 10px;">Submit</button>
-            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-          </form>
-        </div>
-      </div>
+      </footer>
+      <!-- partial -->
     </div>
+    <!-- main-panel ends -->
   </div>
-  <!-- content-wrapper ends -->
-  <!-- partial:../../partials/_footer.html -->
-  <footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
-          href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-    </div>
-  </footer>
-  <!-- partial -->
-  <!-- main-panel ends -->
   <!-- page-body-wrapper ends -->
 </div>

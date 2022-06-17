@@ -21,12 +21,6 @@ namespace Infrastructure.Implemetation
         }
         public bool addNewBusiness(business_entity obj)
         {
-            if (obj.bCategory == "2")
-                obj.bCategory = "Vehicles";
-            else if (obj.bCategory == "3")
-                obj.bCategory = "Food";
-            else if (obj.bCategory == "4")
-                obj.bCategory = "Property";
             try
             {
                 SqlConnection con = new SqlConnection(connString);
@@ -39,6 +33,26 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
+                return false;
+                throw;
+            }
+        }
+        public bool markComplete(business_entity obj)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connString);
+                con.Open();
+                string query = "update tbl_Business set Status='Complete' where BId = "+obj.bName;
+                SqlCommand com = new SqlCommand(query, con);
+                com.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 return false;
                 throw;
             }
@@ -71,6 +85,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }
@@ -83,7 +98,7 @@ namespace Infrastructure.Implemetation
             {
                 SqlConnection con = new SqlConnection(connString);
                 con.Open();
-                string query = "select * from tbl_Business where OwnerEmail = '" + obj.bName + "'";
+                string query = "select * from tbl_Business where OwnerEmail = '" + obj.bName + "' and Status = 'Incomplete'";
                 SqlCommand com = new SqlCommand(query, con);
                 SqlDataReader sdr = com.ExecuteReader();
                 while (sdr.Read())
@@ -103,6 +118,40 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
+                return list;
+                throw;
+            }
+        }
+        public List<business_entity> getClosedBusiness(business_entity obj)
+        {
+            List<business_entity> list = new List<business_entity>();
+            //return list;
+            try
+            {
+                SqlConnection con = new SqlConnection(connString);
+                con.Open();
+                string query = "select * from tbl_Business where OwnerEmail = '" + obj.bName + "' and Status = 'Complete'";
+                SqlCommand com = new SqlCommand(query, con);
+                SqlDataReader sdr = com.ExecuteReader();
+                while (sdr.Read())
+                {
+                    obj = new business_entity();
+                    obj.bName = sdr["BName"].ToString();
+                    obj.ECD = sdr["Bid"].ToString();
+                    obj.bOwner = sdr["OwnerName"].ToString();
+                    obj.bCategory = sdr["BCategory"].ToString();
+                    obj.registeredOn = sdr["RegisteredOn"].ToString();
+                    obj.riskFactor = sdr["RiskFactor"].ToString();
+                    obj.address = sdr["Address"].ToString() + ", " + sdr["City"] + ", " + sdr["Country"];
+                    obj.bId = sdr["OwnerEmail"].ToString();
+                    list.Add(obj);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }
@@ -119,7 +168,7 @@ namespace Infrastructure.Implemetation
                 string query = "select Skills from tbl_Advisors where UserEmail = '" + obj.bCategory + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 SqlDataReader sdr = com.ExecuteReader();
-                while (sdr.Read())
+                if (sdr.Read())
                 {
                     skill = sdr["Skills"].ToString();
                 }
@@ -150,6 +199,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }
@@ -161,6 +211,7 @@ namespace Infrastructure.Implemetation
             try
             {
                 SqlConnection con = new SqlConnection(connString);
+                SqlConnection con1 = new SqlConnection(connString);
                 con.Open();
                 string query = "select * from tbl_Deals where InvestorEmail = '" + obj.bName + "'";
                 SqlCommand com = new SqlCommand(query, con);
@@ -168,18 +219,28 @@ namespace Infrastructure.Implemetation
                 while (sdr.Read())
                 {
                     obj = new business_entity();
-                    obj.bName = sdr["BOwner"].ToString();
+                    obj.bOwner = sdr["BOwner"].ToString();
                     obj.bId = sdr["BId"].ToString();
                     obj.investedAmount = sdr["Amount"].ToString();
                     obj.status = sdr["DealStatus"].ToString();
-                    obj.address = sdr["AdvisorAttached"].ToString();
+                    obj.address = sdr["AdvisorAttatched"].ToString();
                     obj.bCategory = sdr["InvestorEmail"].ToString();
+                    con1.Open();
+                    string query1 = "select * from tbl_Business where Bid = '" + obj.bId + "'";
+                    SqlCommand com1 = new SqlCommand(query1, con1);
+                    SqlDataReader sdr1 = com1.ExecuteReader();
+                    if (sdr1.Read())
+                    {
+                        obj.bName = sdr1["BName"].ToString();
+                    }
+                    con1.Close();
                     list.Add(obj);
                 }
                 return list;
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }
@@ -190,12 +251,14 @@ namespace Infrastructure.Implemetation
             {
                 SqlConnection con = new SqlConnection(connString);
                 con.Open();
-                string query = "insert into tbl_Deals values (0," + obj.bId + ",'" + obj.bOwner + "','" + obj.investedAmount + "','In Progress','" + obj.progress + "','" + obj.bName + "')";
+                string query = "insert into tbl_Deals values (0," + obj.bId + ",'" + obj.bOwner + "','" + obj.investedAmount + "','Pending','" + obj.progress + "','" + obj.bName + "')";
                 SqlCommand com = new SqlCommand(query, con);
                 com.ExecuteNonQuery();
+                con.Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 throw;
             }
         }
@@ -230,6 +293,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return obj1;
                 throw;
             }
@@ -259,6 +323,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
                 throw;
             }
@@ -277,6 +342,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
                 throw;
             }
@@ -306,6 +372,7 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }
@@ -344,6 +411,40 @@ namespace Infrastructure.Implemetation
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
+                return list;
+                throw;
+            }
+        }
+        public List<user_entity> getAssociatedAdvisors(business_entity bCat)
+        {
+            List<user_entity> list = new List<user_entity>();
+            user_entity obj;
+            try
+            {
+                SqlConnection con = new SqlConnection(connString);
+                con.Open();
+                string query = "";
+                query = "select * from tbl_Advisors where Skills like '%" + bCat.bCategory + "%'";
+                SqlCommand com = new SqlCommand(query, con);
+                SqlDataReader sdr = com.ExecuteReader();
+                while (sdr.Read())
+                {
+                    obj = new user_entity();
+                    obj.userName = sdr["UserName"].ToString();
+                    obj.email = sdr["UserEmail"].ToString();
+                    obj.firmName = sdr["FirmName"].ToString();
+                    obj.description = sdr["RegisteredIn"].ToString();
+                    obj.rating = sdr["Rating"].ToString();
+                    obj.contact = sdr["Contact"].ToString();
+                    obj.country = sdr["Country"].ToString();
+                    list.Add(obj);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
                 return list;
                 throw;
             }

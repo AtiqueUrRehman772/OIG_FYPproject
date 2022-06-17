@@ -25,11 +25,20 @@ export class GetAllUsersService {
   getAdvisorProfile() {
     return this.http.get("https://localhost:44302/api/User/getProfile");
   }
-  editProfile(advisorId:string,userName:string,contact:string,firmName:string,skills:string,description:string) {
-    return this.http.post("https://localhost:44302/api/User/editProfile",{email:advisorId,userName:userName,contact:contact,firmName:firmName,skills:skills,description:description});
+  getAdvisorInfo(email:string){
+    return this.http.post("https://localhost:44302/api/User/getAdvisorInfo",{email:email});
+  }
+  editProfile(advisorId:string,userName:string,contact:string,firmName:string,skills:string,description:string,skillList:string) {
+    return this.http.post("https://localhost:44302/api/User/editProfile",{email:advisorId,userName:userName,contact:contact,firmName:firmName,skills:skills,description:description,role:skillList});
+  }
+  revealInvestors(bId:string) {
+    return this.http.post("https://localhost:44302/api/User/revealInvestors",{email:bId});
   }
   getAllAdvisors() {
     return this.http.get("https://localhost:44302/api/User/getAllAdvisors");
+  }
+  getMyAdvisors() {
+    return this.http.get("https://localhost:44302/api/User/getMyAdvisors");
   }
 
   ////////////   --------    CRUD User Operations   --------   ////////////

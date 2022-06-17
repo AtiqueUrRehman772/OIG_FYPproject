@@ -33,18 +33,18 @@ import { BussinessOwnerHomepageComponent } from './pages/bussinessOwnerHomepage/
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-     RouterModule.forRoot([
-       { path: '', component: LoginComponent },
-       { path: 'login', component: LoginComponent },
-       { path: 'signup', component: SignupComponent },
-       { path: 'adminDashboard', canActivate:[AuthGuard], component: AdminDashboardComponent },
-       { path: 'bussinessOwnerHomepage', component: BussinessOwnerHomepageComponent },
-       { path: 'advisorHomePage', component: AdvisorHomePageComponent },
-       { path: 'investorHomePage', component: InvestorHomePageComponent },
-       { path: 'profile', component: ProfileComponent },
+    RouterModule.forRoot([
+      { path: '', component: LoginComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'adminDashboard', canActivate: [AuthGuard], component: AdminDashboardComponent },
+      { path: 'bussinessOwnerHomepage', component: BussinessOwnerHomepageComponent },
+      { path: 'advisorHomePage', component: AdvisorHomePageComponent },
+      { path: 'investorHomePage', component: InvestorHomePageComponent },
+      { path: 'profile', component: ProfileComponent },
     ])
   ],
   providers: [UserRegisterService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

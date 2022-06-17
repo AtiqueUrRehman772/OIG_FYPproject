@@ -10,10 +10,11 @@ namespace Infrastructure.Interface
     public interface Iuser
     {
         public string login(user_entity obj);
-        public bool register(user_entity obj);
+        public user_entity register(user_entity obj);
         public bool deleteUser(user_entity obj);
         public bool editUserDetails(user_entity obj);
         public user_entity getUserCount();
+        public user_entity getAdvisorInfo(user_entity obj);
         public user_entity getAdvisorProfile(string Id);
         public user_entity getInvestorProfile(string Id);
         public List<user_entity> getInvestors();
@@ -25,6 +26,9 @@ namespace Infrastructure.Interface
 
 
         //////////  ======   For Investor Homepage   ======  /////////
-        public List<advisor> getAllAdvisors();
+        public List<advisor> getAllAdvisors(string id);
+        public List<advisor> getMyAdvisors(string id);
+
+        public List<user_entity> revealInvestors(user_entity obj,string email);
     }
 }

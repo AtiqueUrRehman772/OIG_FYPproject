@@ -82,16 +82,14 @@ namespace OIG_FYPproject.Controllers
 
         ////////////    CRUD Operations   /////////////
         [HttpPost("declineRequest")]
-        public bool declineRequest(request_entity reqId)
+        public void declineRequest(request_entity reqId)
         {
-            bool response = _request.declineRequest(reqId);
-            return response;
+            _request.declineRequest(reqId);
         }
         [HttpPost("acceptRequest")]
-        public bool acceptRequest(request_entity reqId)
+        public void acceptRequest(request_entity reqId)
         {
-            bool response = _request.acceptRequest(reqId);
-            return response;
+            _request.acceptRequest(reqId);
         }
         [HttpPost("acceptHiringRequest")]
         public bool acceptHiringRequest(request_entity reqId)
@@ -106,5 +104,29 @@ namespace OIG_FYPproject.Controllers
             return response;
         }
 
+        [HttpPost("getInvestmentRequests")]
+        public List<request_entity> getInvestmentRequests(request_entity reqId)
+        {
+            List<request_entity> obj = _request.getInvestmentRequests(reqId);
+            return obj;
+        }
+        [HttpPost("getInvestmentRequestsHistory")]
+        public List<request_entity> getInvestmentRequestsHistory(request_entity reqId)
+        {
+            List<request_entity> obj = _request.getInvestmentRequestsHistory(reqId);
+            return obj;
+        }
+        [HttpPost("acceptInvestmentRequest")]
+        public bool acceptInvestmentRequest(request_entity reqId)
+        {
+            bool obj = _request.acceptInvestmentRequest(reqId);
+            return obj;
+        }
+        [HttpPost("declineInvestmentRequest")]
+        public bool declineInvestmentRequest(request_entity reqId)
+        {
+            bool obj = _request.declineInvestmentRequest(reqId);
+            return obj;
+        }
     }
 }

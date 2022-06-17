@@ -3,6 +3,9 @@ import { BusinessService } from '../services/business/business.service';
 import { GetAllUsersService } from '../services/getUsers/getAllUsers.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+
+declare const $: any;
 
 @Component({
   selector: 'app-investorHomePage',
@@ -17,7 +20,6 @@ export class InvestorHomePageComponent implements OnInit {
   bCat = new FormGroup({
     category: new FormControl("")
   });
-  
   riskPercentage: any;
   users: any;
   time: any;
@@ -27,12 +29,18 @@ export class InvestorHomePageComponent implements OnInit {
   showTblAdvisor: boolean = false;
   showTblBusiness: boolean = false;
   showAdvisorDetail: boolean = false;
+  showAllAdvisors: boolean = true;
   showBusinessInfo: boolean = false;
-  businessInfo: any;
   selectAdvisor: boolean = false;
+  toggleListArrow: boolean = false;
+  businessInfo: any;
   advisors: any;
+  hiredAdvisor: any;
+  associatedAdvisors: any;
+  bCategories: any = ["Food", "Vehicles", "Property"];
   advisor: any = { UName: "", Email: "", Firm: "", Rating: "" };
   business: any;
+  deals: any;
   profileDetails: any;
   skills: any;
   toggleEditable() {
@@ -40,6 +48,10 @@ export class InvestorHomePageComponent implements OnInit {
       this.selectAdvisor = false;
     else
       this.selectAdvisor = true;
+    $("#widchange1").toggleClass('col-1');
+    $("#widchange1").toggleClass('col-4');
+    $("#widchange2").toggleClass('col-11');
+    $("#widchange2").toggleClass('col-8');
   }
   dealInfo = new FormGroup({
     amount: new FormControl(""),
@@ -50,6 +62,8 @@ export class InvestorHomePageComponent implements OnInit {
       this.router.navigateByUrl("/login");
     }
     setTimeout(() => {
+      $("#offcanvas-invest").hide();
+      $("#offcanvas-advisorInfo").hide();
       this.showLoader = false;
     }, 750);
     //this.getAllAdvisors();
@@ -57,6 +71,11 @@ export class InvestorHomePageComponent implements OnInit {
     this.getUserId();
     this.getProfile();
     this.getTime();
+    this.getAllAdvisors();
+    setTimeout(() => {
+      this.myDeals();
+      this.hideAdvisor();
+    }, 500);
     this.reloader();
   }
   reloader() {
@@ -122,10 +141,10 @@ export class InvestorHomePageComponent implements OnInit {
     this.showTblBusiness = true;
   }
   showBusinessInfoDiv() {
-    this.showLoader1 = true;
-    setTimeout(() => {
-      this.showLoader1 = false;
-    }, 400);
+    // this.showLoader1 = true;
+    // setTimeout(() => {
+    //   this.showLoader1 = false;
+    // }, 400);
     this.profile = false;
     this.showTblAdvisor = false;
     this.showAdvisorDetail = false;
@@ -163,8 +182,8 @@ export class InvestorHomePageComponent implements OnInit {
     }, 400);
     this.getAllUsers.getAllAdvisors().subscribe(
       data => {
+        this.showAllAdvisors = true;
         this.showAdvisor();
-        //console.warn(data);
         this.advisors = data;
       },
       (error) => {
@@ -177,11 +196,12 @@ export class InvestorHomePageComponent implements OnInit {
     setTimeout(() => {
       this.showLoader1 = false;
     }, 400);
-    this.getAllUsers.getAllAdvisors().subscribe(
+    this.getAllUsers.getMyAdvisors().subscribe(
       data => {
         this.showAdvisor();
         //console.warn(data);
         this.advisors = data;
+        this.showAllAdvisors = false;
       },
       (error) => {
         console.error(error);
@@ -222,13 +242,15 @@ export class InvestorHomePageComponent implements OnInit {
     );
   }
   showAdvisorDetails(userName: string, userEmail: string, firmName: string) {
-    this.profile = false;
-    this.showTblAdvisor = false;
-    this.showTblBusiness = false;
-    this.showAdvisorDetail = true;
-    this.advisor.UName = userName;
-    this.advisor.Email = userEmail;
-    this.advisor.Firm = firmName;
+    this.getAllUsers.getAdvisorInfo(userEmail).subscribe(
+      data => {
+        this.advisor = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    this.revealAdvisors();
   }
   hideAdvisorDetails() {
     this.showAdvisorDetail = false;
@@ -241,7 +263,11 @@ export class InvestorHomePageComponent implements OnInit {
     }, 400);
     this.businessService.hireAdvisor(advisorEmail, this.users.email).subscribe(
       data => {
-        alert('Your request is sent to the corresponding Advisor !');
+        Swal.fire(
+          'Success !',
+          'Your request is sent to the corresponding Advisor !',
+          'success'
+        )
       },
       (error) => {
         console.error(error);
@@ -249,15 +275,11 @@ export class InvestorHomePageComponent implements OnInit {
     );
   }
   getBusinessInfo(Bid: string) {
-    this.showLoader1 = true;
-    setTimeout(() => {
-      this.showLoader1 = false;
-    }, 400);
     this.businessService.getBusinessInfo(Bid).subscribe(
       data => {
         this.businessInfo = data;
         this.showBusinessInfoDiv();
-        console.log(this.businessInfo);
+        //console.log(this.businessInfo);
       },
       (error) => {
         console.error(error);
@@ -281,41 +303,106 @@ export class InvestorHomePageComponent implements OnInit {
     );
   }
   myDeals() {
-    //console.log(this.users.email);
     this.showLoader1 = true;
     setTimeout(() => {
       this.showLoader1 = false;
+      this.showTblBusiness = false;
     }, 400);
     this.businessService.myDeals(this.users.email).subscribe(
       data => {
-        //alert('Your request is sent to the corresponding Advisor !');
-        //this.business = data;
-        //console.warn(this.business);
+        this.deals = data;
       },
       (error) => {
         console.error(error);
       }
     );
   }
+  hireThisAdvisor(email: string) {
+    this.hiredAdvisor = email;
+  }
   makeADeal(bid: string, bOwner: string) {
-    //console.log('Yesssss');
     this.showLoader1 = true;
     setTimeout(() => {
       this.showLoader1 = false;
     }, 400);
-    if (!this.selectAdvisor){
+    if (!this.selectAdvisor) {
       this.dealInfo.value.advisorAttached = 'Not Selected';
     }
-    this.businessService.makeADeal(this.users.email, bid, bOwner, this.dealInfo.value.amount, this.dealInfo.value.advisorAttached).subscribe(
+    else {
+      this.dealInfo.value.advisorAttached = this.hiredAdvisor;
+    }
+    console.log(this.hiredAdvisor);
+    this.businessService.makeADeal(this.users.email, this.businessInfo.bId, this.businessInfo.bOwner, this.dealInfo.value.amount, this.dealInfo.value.advisorAttached).subscribe(
       data => {
-        alert('Request sent to the Advisor');
+        Swal.fire(
+          'Success!',
+          'Request sent to Business Owner !',
+          'success'
+        )
+        setTimeout(() => {
+          this.myDeals();
+        }, 400);
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
+  getAssociatedAdvisors(bCategory: string) {
+    this.businessService.getAssociatedAdvisors(bCategory).subscribe(
+      data => {
+        this.associatedAdvisors = data;
+        this.showLoader = false;
+        this.showLoader1 = false;
+        this.profile = false;
+        this.showTblAdvisor = false;
+        this.showTblBusiness = false;
+        this.showBusinessInfo = false;
+        this.selectAdvisor = false;
+        this.showAdvisorDetail = true;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  activate(id: any, id2: any, id3: any) {
+    if (this.toggleListArrow) {
+      this.deactivate(id, id2, id3);
+    }
+    else {
+      this.toggleListArrow = true;
+      $('#' + id).css({ 'background-color': '#f5f7fa' });
+      $('#' + id3).css({ 'transform': 'rotate(90deg)', 'transition': 'all 0.5s' });
+      $('#' + id2).toggleClass("navItems-customchange");
+    }
+  }
+  deactivate(id: any, id2: any, id3: any) {
+    this.toggleListArrow = false;
+    $('#' + id).css({ 'background-color': 'white' });
+    $('#' + id3).css({ 'transform': 'rotate(0deg)', 'transition': 'all 0.5s' });
+    $('#' + id2).toggleClass("navItems-customchange");
+  }
+  revealAdvisors() {
+    $("#offcanvas-advisorInfo").show();
+    $('#offcanvas-advisorInfo').css({ 'width': '81%', 'position': 'absolute' });
+  }
+  hideAdvisors() {
+    $('#offcanvas-advisorInfo').css({ 'width': '0%' });
+    setTimeout(() => {
+      $("#offcanvas-advisorInfo").hide();
+    }, 550);
+  }
+  revealInvest() {
+    $("#offcanvas-invest").show();
+    $('#offcanvas-invest').css({ 'width': '81%', 'position': 'absolute' });
+  }
+  hideInvest() {
+    $('#offcanvas-invest').css({ 'width': '0%' });
+    setTimeout(() => {
+      $("#offcanvas-invest").hide();
+    }, 550);
+  }
   logout() {
     sessionStorage.removeItem('Id');
     this.router.navigateByUrl("/login");

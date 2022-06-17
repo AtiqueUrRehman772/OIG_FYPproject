@@ -183,8 +183,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of requests">
-                    <td>{{count}}</td>
+                  <tr *ngFor="let item of requests;let id=index">
+                    <td>{{id+1}}</td>
                     <td>{{item.userName}}</td>
                     <td>{{item.userEmail}}</td>
                     <td>{{item.userPassword}}</td>
@@ -248,8 +248,12 @@
                         Edit
                         <i class="fas fa-pencil-alt btn-icon-append"></i>
                       </button>
-                      <button style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
+                      <button *ngIf="item.role !='admin'" style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
                         (click)="deleteUser(item.email,item.role)">Delete
+                        <i class="fas fa-trash-alt btn-icon-append"></i>
+                      </button>
+                      <button *ngIf="item.role =='admin'" style="margin-left: 5px;" class="btn btn-danger btn-icon-text"
+                        disabled>Delete
                         <i class="fas fa-trash-alt btn-icon-append"></i>
                       </button>
                     </td>

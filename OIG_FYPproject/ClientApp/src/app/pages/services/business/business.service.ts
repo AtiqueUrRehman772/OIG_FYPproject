@@ -23,6 +23,12 @@ export class BusinessService {
   getMyBusinesses(email:string){
     return this.http.post("https://localhost:44302/api/Business/getMyBusinesses",{bName:email});
   }
+  getClosedBusiness(email:string){
+    return this.http.post("https://localhost:44302/api/Business/getClosedBusiness",{bName:email});
+  }
+  markComplete(bid:string){
+    return this.http.post("https://localhost:44302/api/Business/markComplete",{bName:bid});
+  }
   hireAdvisor(email:string,loginId){
     return this.http.post("https://localhost:44302/api/Business/hireAdvisor",{bName:email,bOwner:loginId});
   }
@@ -30,6 +36,7 @@ export class BusinessService {
     return this.http.post("https://localhost:44302/api/Business/myDeals",{bName:email});
   }
   makeADeal(email:string,bid:string,bOwner:string,amount:string,advisorAttached:string){
+    console.log(advisorAttached);
     return this.http.post("https://localhost:44302/api/Business/makeADeal  ",{bName:email,bId:bid,bOwner:bOwner,investedAmount:amount,progress:advisorAttached});
   }
   getBusinessInfo(Bid:string){
@@ -40,5 +47,8 @@ export class BusinessService {
   }
   getFilteredBusiness(riskPercentage:string,category:string) {
     return this.http.post("https://localhost:44302/api/Business/getFilteredBusiness",{ progress: riskPercentage,bCategory: category});
+  }
+  getAssociatedAdvisors(category:string) {
+    return this.http.post("https://localhost:44302/api/Business/getAssociatedAdvisors",{bCategory: category});
   }
 }

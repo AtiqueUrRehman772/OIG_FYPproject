@@ -15,5 +15,7 @@ namespace OIG_Core.Entities
         public string firmName { get; set; }
         public string regiesteredIn { get; set; }
         public string rating { get; set; }
+        public string skills { get; set; }
+        public string businessAdvised { get; set; }
     }
 }

@@ -1,0 +1,20 @@
+.navItems-custom{
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.navItems-customchange{
+  height: 120px;
+}
+.offcanvas-custom{
+  width: 0%;
+  right: 0;
+  min-height: 90vh;
+  transition : width 0.5s;
+}
+.offcanvas-custom-col{
+  border: 0.25px solid lightgray;
+  background-color: white;
+  min-height: 90vh;
+}
